@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050b18">
+  <link rel="icon" type="image/png" href="assets/icon-192.png">
+  <title>🛠️ Story Time — Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>🛠️</text></svg>">
+</head>
+<body class="admin-body-page">
+
+  <div class="admin-wrap">
+
+    <!-- Password gate -->
+    <section class="admin-gate glass" id="admin-gate">
+      <h2>🛠️ Admin Access</h2>
+      <div class="field">
+        <label for="admin-pass">Admin password</label>
+        <input type="password" id="admin-pass" autocomplete="off">
+      </div>
+      <button class="primary-btn" id="admin-unlock" type="button">Unlock</button>
+      <p class="admin-note err" id="gate-note"></p>
+    </section>
+
+    <!-- Control panel (hidden until unlocked) -->
+    <div class="admin-panel hidden" id="admin-panel">
+
+      <div class="admin-topbar">
+        <h2 class="admin-title">🛠️ Admin Dashboard</h2>
+        <button class="ghost-btn" id="admin-logout" type="button">Log out</button>
+      </div>
+
+      <!-- ═══ QUIZ BUILDER ═══ -->
+      <section class="admin-section glass qm-section">
+        <h3 class="qm-header">⚙️ Quiz Setup & Builder</h3>
+
+        <!-- Publish New Quiz -->
+        <details class="qm-details" id="qm-publish-details">
+          <summary class="qm-summary qm-summary-publish">🚀 Prepare New Quiz</summary>
+          <div class="qm-publish-area">
+            <div class="qm-publish-selects">
+              <div class="qm-select-group">
+                <label>Story</label>
+                <select id="quiz-story"></select>
+              </div>
+              <div class="qm-select-group">
+                <label>Part</label>
+                <select id="quiz-part"></select>
+              </div>
+            </div>
+
+            <!-- Preview words before publishing -->
+            <div class="qm-preview-words" id="qm-preview-words"></div>
+
+            <div class="qm-publish-actions">
+              <button class="qm-btn qm-btn-publish" id="save-quiz-config" type="button">💾 Save as Draft</button>
+            </div>
+          </div>
+        </details>
+
+        <!-- Collapsible: Settings -->
+        <details class="qm-details" id="qm-settings-details">
+          <summary class="qm-summary">⚙️ Quiz Settings</summary>
+          <div class="qm-settings">
+            <div class="qm-setting-row">
+              <label for="max-attempts">Max Attempts per Student</label>
+              <div class="qm-setting-control">
+                <input type="number" id="max-attempts" min="1" max="99" value="1">
+                <button class="qm-btn qm-btn-mini" id="save-max-attempts" type="button">Save</button>
+              </div>
+            </div>
+            <p class="qm-setting-hint" id="free-retake-note">Highest score is kept across attempts.</p>
+          </div>
+        </details>
+
+      </section>
+
+      <!-- ═══ LIVE QUIZ & RESULTS ═══ -->
+      <section class="admin-section glass qm-section">
+        <h3 class="qm-header">⚡ Live Quiz & Results</h3>
+
+        <div id="quizzes-container">
+          <div class="qm-empty">Loading quizzes...</div>
+        </div>
+
+
+
+        <p class="admin-note" id="quiz-config-note"></p>
+      </section>
+
+      <!-- ═══ STUDENTS ═══ -->
+      <section class="admin-section glass">
+        <h3>👥 Create Student</h3>
+        <div class="admin-row">
+          <input type="text" id="new-username" placeholder="Username" maxlength="50">
+          <input type="text" id="new-name" placeholder="Display name" maxlength="50">
+          <input type="text" id="new-password" placeholder="Password" maxlength="100">
+          <button class="primary-btn" id="create-student" type="button">Add</button>
+        </div>
+        <p class="admin-note" id="create-note"></p>
+        <div class="admin-student-list" id="student-list"></div>
+      </section>
+
+      <!-- ═══ VISIBILITY ═══ -->
+      <section class="admin-section glass">
+        <h3>Story Part Visibility</h3>
+        <div id="visibility-body"></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Quiz overlay (shared engine, preview mode) -->
+  <div class="quiz-overlay hidden" id="quiz-overlay">
+    <div class="quiz-card glass" id="quiz-card">    </div>
+  </div>
+
+  <!-- Admin Preview Modal (Inline Preview) -->
+  <div class="admin-preview-modal hidden" id="admin-preview-modal">
+    <div class="admin-preview-content">
+      <button class="admin-preview-close" id="admin-preview-close" type="button">✕ Close Preview</button>
+      <iframe class="admin-preview-iframe" id="admin-preview-iframe" src=""></iframe>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyBCA6DCMQH4Ncp82OesfdL4RgDE-8MEh4g",
+      authDomain: "storysaadrnd.firebaseapp.com",
+      databaseURL: "https://storysaadrnd-default-rtdb.firebaseio.com",
+      projectId: "storysaadrnd",
+      appId: "1:205726822967:web:e5a5ef3d7486e8d59085b2"
+    };
+    firebase.initializeApp(firebaseConfig);
+    window.db = firebase.database();
+    window.fs = firebase.firestore();
+  </script>
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Story Time — sign in to start reading.">
+  <meta name="theme-color" content="#06131c">
+  <link rel="icon" type="image/png" href="assets/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="manifest" href="manifest.json">
+  <title>Story Time — Sign In</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>📚</text></svg>">
+</head>
+
+<!--
+  BACKGROUND IMAGE: to use your own background, set the link in styles.css
+  under ".login-body { --bg-image: url('...') }", or override it here, e.g.:
+  <body class="login-body" style="--bg-image: url('https://your-link/background.jpg')">
+-->
+<body class="login-body">
+
+  <!-- Floating hero names drifting up between the background and the card -->
+  <div class="float-names" id="float-names" aria-hidden="true"></div>
+
+  <div class="login-card">
+    <div class="login-brand">
+      <img class="login-float-img" src="assets/asset1.png" alt="Reading Heroes">
+      <h1 class="login-title">Story Time</h1>
+      <p class="login-tag">Sign in to start reading</p>
+    </div>
+
+    <form id="login-form" novalidate>
+      <div class="login-field">
+        <label for="username">Username</label>
+        <input id="username" name="student-name" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" maxlength="64" placeholder="Your username">
+      </div>
+      <div class="login-field">
+        <label for="password">Password</label>
+        <input id="password" name="student-code" type="password" autocomplete="new-password" maxlength="128" placeholder="Your password">
+      </div>
+      <button class="login-submit" id="login-btn" type="submit">Sign In</button>
+      <p class="login-msg" id="login-msg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyBCA6DCMQH4Ncp82OesfdL4RgDE-8MEh4g",
+      authDomain: "storysaadrnd.firebaseapp.com",
+      databaseURL: "https://storysaadrnd-default-rtdb.firebaseio.com",
+      projectId: "storysaadrnd",
+      appId: "1:205726822967:web:e5a5ef3d7486e8d59085b2"
+    };
+    firebase.initializeApp(firebaseConfig);
+    window.db = firebase.database();
+    window.fs = firebase.firestore();
+  </script>
+
+  <script type="module" src="landing.js"></script>
+</body>
+</html>

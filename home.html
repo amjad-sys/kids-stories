@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Your Story Time home — the Wall of Fame leaderboard, the Quick Quiz, and all our stories">
+  <meta name="theme-color" content="#050b18">
+  <link rel="icon" type="image/png" href="assets/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="manifest" href="manifest.json">
+  <title>🏆 Story Time — Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>🏆</text></svg>">
+</head>
+<body class="home-body">
+
+  <div class="home-wrap">
+    <div class="home-topbar">
+      <h1 class="home-greeting" id="home-greeting">Welcome!</h1>
+      <div class="home-actions">
+        <button class="logout-btn" id="logout-btn" type="button">Log out</button>
+      </div>
+    </div>
+
+    <!-- Wall of Fame -->
+    <section class="leaderboard" aria-label="Wall of Fame leaderboard">
+      <div class="lb-head">
+        <div class="lb-head-text">
+          <h2>🏆 Wall of Fame</h2>
+          <p class="lb-caption">Our top readers, ranked by total points.</p>
+        </div>
+        <button class="glass-btn" id="quiz-fab" type="button" style="display:none">⚡ Quick Quiz</button>
+      </div>
+      <div id="lb-list">
+        <div class="lb-empty">Loading the Wall of Fame…</div>
+      </div>
+    </section>
+
+    <!-- Stories (relocated from the old index page) -->
+    <section class="stories-section">
+      <h2 class="section-title"><span class="section-icon">📖</span> Our Stories</h2>
+      <div class="stories-grid" id="stories-grid"></div>
+      <div class="loading-spinner" id="loading-spinner">
+        <div class="spinner"></div>
+        <p>Loading stories...</p>
+      </div>
+      <div class="empty-state" id="empty-state" style="display:none">
+        <div class="empty-icon">📚</div>
+        <h3>No stories yet!</h3>
+        <p>New stories are coming soon. Stay tuned! 🌟</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Quiz overlay -->
+  <div class="quiz-overlay hidden" id="quiz-overlay">
+    <div class="quiz-card glass" id="quiz-card">
+      <!-- Populated by quiz.js -->
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyBCA6DCMQH4Ncp82OesfdL4RgDE-8MEh4g",
+      authDomain: "storysaadrnd.firebaseapp.com",
+      databaseURL: "https://storysaadrnd-default-rtdb.firebaseio.com",
+      projectId: "storysaadrnd",
+      appId: "1:205726822967:web:e5a5ef3d7486e8d59085b2"
+    };
+    firebase.initializeApp(firebaseConfig);
+    window.db = firebase.database();
+    window.fs = firebase.firestore();
+  </script>
+
+  <!-- Session guard: redirect to landing when not logged in (Req 2.9) -->
+  <script type="module">
+    import { requireSession, getSession } from './auth-core.js';
+    
+    // Inject mock session for admin preview so they don't get kicked out to login screen
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('preview') === '1') {
+      sessionStorage.setItem('session', JSON.stringify({ username: 'preview_admin', displayName: 'Admin Preview' }));
+    }
+
+    const session = requireSession();
+    if (session) {
+      const greeting = document.getElementById('home-greeting');
+      if (greeting) greeting.textContent = 'Welcome, ' + (session.displayName || 'explorer') + '!';
+    }
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      sessionStorage.removeItem('session');
+      window.location.replace('index.html');
+    });
+  </script>
+
+  <script src="app.js"></script>
+  <script type="module" src="leaderboard.js"></script>
+  <script type="module" src="quiz.js"></script>
+  <script type="module" src="notify.js"></script>
+  <script type="module" src="activity.js"></script>
+  <!-- Story Buddy (voice AI) temporarily hidden:
+  <script type="module" src="buddy.js"></script>
+  -->
+</body>
+</html>

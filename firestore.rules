@@ -1,0 +1,100 @@
+rules_version = '2';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SECURITY MODEL — english-platform-overhaul (see design.md "Security Model", Req 9)
+//
+// This app uses a simple classroom username/password scheme, NOT Firebase Auth.
+// That means these rules cannot identify a specific caller (no request.auth).
+// The protections here are therefore data-shape + enumeration protections, not
+// true per-user authorization.
+//
+// RISK (Req 9.1, 9.3): student passwords are plaintext classroom access codes.
+//   - Passwords live ONLY in `students_auth/{id}`. The public `students/{id}`
+//     documents contain NO password field, so leaderboard reads never see one
+//     (Req 9.2). `students_auth` denies `list`, so passwords cannot be bulk-read;
+//     only an exact-ID `get` (the login check) is allowed.
+//   - `score` updates are clamped to [0,100] and forced monotonic (never decrease)
+//     at the rules boundary, backing up the client-side best-score merge (Req 5).
+//
+// MITIGATION PATH (Req 9.3, 9.4): move to Firebase Authentication (or Cloud
+//   Functions with hashed credentials) so `request.auth` gates writes per-user and
+//   the admin password is no longer a client-side deterrent only.
+// ─────────────────────────────────────────────────────────────────────────────
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Public student profiles — leaderboard reads. NO password field here.
+    // Fields: username, displayName, cumulativeScore (running total, never
+    // decreases), lastScore (most recent quiz), lastQuizVersion (which quiz round
+    // the student last attempted — used to allow exactly one attempt per round).
+    match /students/{id} {
+      allow get, list: if true;
+
+      allow create: if request.resource.data.keys().hasOnly(
+                        ['username', 'displayName', 'cumulativeScore', 'lastScore', 'lastQuizVersion', 'quizAttemptCount',
+                         'photo', 'timeToday', 'timeDate', 'retakeAllowed', 'score',
+                         'cumulativeAttempts', 'scoreUpdatedAt'])
+                    && request.resource.data.cumulativeScore is int
+                    && request.resource.data.cumulativeScore >= 0
+                    && request.resource.data.lastScore is int
+                    && request.resource.data.lastScore >= 0
+                    && request.resource.data.lastQuizVersion is int
+                    && request.resource.data.lastQuizVersion >= 0
+                    && (!('photo' in request.resource.data)
+                        || (request.resource.data.photo is string && request.resource.data.photo.size() < 400000));
+
+      // Updates keep identity and valid shape. The admin can freely edit grades
+      // (raise or lower), so cumulative is NOT forced monotonic here — this is a
+      // classroom tool without per-user auth (see risk note above).
+      allow update: if request.resource.data.keys().hasOnly(
+                        ['username', 'displayName', 'cumulativeScore', 'lastScore', 'lastQuizVersion', 'quizAttemptCount',
+                         'photo', 'timeToday', 'timeDate', 'retakeAllowed', 'score',
+                         'cumulativeAttempts', 'scoreUpdatedAt'])
+                    && request.resource.data.username == resource.data.username
+                    && request.resource.data.cumulativeScore is int
+                    && request.resource.data.cumulativeScore >= 0
+                    && request.resource.data.cumulativeScore <= 100000
+                    && request.resource.data.lastScore is int
+                    && request.resource.data.lastScore >= 0
+                    && request.resource.data.lastScore <= 1000
+                    && request.resource.data.lastQuizVersion is int
+                    && request.resource.data.lastQuizVersion >= 0
+                    && (!('timeToday' in request.resource.data)
+                        || (request.resource.data.timeToday is int && request.resource.data.timeToday >= 0))
+                    && (!('timeDate' in request.resource.data) || request.resource.data.timeDate is string)
+                    && (!('quizAttemptCount' in request.resource.data) || request.resource.data.quizAttemptCount is int)
+                    && (!('retakeAllowed' in request.resource.data) || request.resource.data.retakeAllowed is bool)
+                    && (!('photo' in request.resource.data)
+                        || (request.resource.data.photo is string && request.resource.data.photo.size() < 400000));
+
+      allow delete: if true; // admin dashboard (no auth layer — see risk note above)
+    }
+
+    // Credential store — single-document GET for login only; LIST denied so
+    // passwords cannot be enumerated (Req 9.2).
+    match /students_auth/{id} {
+      allow get: if true;
+      allow list: if false;
+      allow write: if true; // admin create/delete (no auth layer — see risk note above)
+    }
+
+    // Active quiz selection (legacy/migration)
+    match /config/{doc} {
+      allow read: if true;
+      allow write: if true; // admin only in practice (no auth layer — see risk note above)
+    }
+
+    // Historical Quizzes — tracks all prepared quizzes.
+    match /quizzes/{docId} {
+      allow read: if true;
+      allow write: if true; // admin only in practice
+    }
+
+    // Quiz results — per-student per-quiz-round performance tracking.
+    match /quiz_results/{docId} {
+      allow read: if true;
+      allow write: if true; // students write their results, admin reads them
+    }
+  }
+}

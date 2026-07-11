@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Read and listen to English stories for kids">
+  <meta name="theme-color" content="#0d9488">
+  <link rel="icon" type="image/png" href="assets/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="manifest" href="manifest.json">
+  <title>📖 Reading Story — Story Time</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>📖</text></svg>">
+</head>
+<body class="reader-body">
+
+  <!-- ══════════ Story Header ══════════ -->
+  <header class="story-header" id="story-header">
+    <a href="home.html" class="back-btn" id="back-btn" aria-label="Back to stories">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5"/>
+        <path d="M12 19l-7-7 7-7"/>
+      </svg>
+      <span>Back</span>
+    </a>
+    <h1 class="story-title" id="story-title">Loading...</h1>
+    <div class="header-spacer"></div>
+  </header>
+
+  <!-- ══════════ Progress Bar ══════════ -->
+  <div class="progress-track" id="progress-track">
+    <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+  </div>
+
+  <!-- ══════════ Intro Video Overlay ══════════ -->
+  <div class="intro-video-overlay hidden" id="intro-video-overlay">
+    <video class="intro-video" id="intro-video-element" playsinline></video>
+    <button class="skip-video-btn" id="skip-video-btn" type="button">Skip</button>
+    <button class="play-video-btn hidden" id="play-video-btn" type="button">▶ Tap to Play Story</button>
+  </div>
+
+  <!-- ══════════ Reader Content ══════════ -->
+  <main class="reader-container hidden" id="reader-container">
+
+    <!-- Part Display -->
+    <div class="part-display" id="part-display">
+      <div class="part-image-wrapper" id="part-image-wrapper">
+        <div class="part-counter" id="part-counter">Part 1 of 4</div>
+        <img class="part-image" id="part-image" src="" alt="Story illustration">
+      </div>
+      
+      <div class="part-text" id="part-text">
+        <!-- 3 lines of story text -->
+      </div>
+
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="nav-controls" id="nav-controls">
+      <button class="nav-btn prev-btn" id="prev-btn" type="button" disabled>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/>
+        </svg>
+        <span>Previous</span>
+      </button>
+      <div class="part-dots" id="part-dots">
+        <!-- Dots populated by JS -->
+      </div>
+      <button class="nav-btn next-btn" id="next-btn" type="button">
+        <span>Next</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"/><path d="M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
+  </main>
+
+  <!-- ══════════ Completion Screen ══════════ -->
+  <div class="completion-screen hidden" id="completion-screen">
+    <div class="completion-content">
+      <div class="confetti-container" id="confetti-container"></div>
+      <div class="completion-emoji">🎉</div>
+      <h2 class="completion-title">Well Done!</h2>
+      <p class="completion-text">You finished the story! Great job! 🌟</p>
+      <a href="home.html" class="completion-btn" id="completion-btn">
+        📚 Read More Stories
+      </a>
+    </div>
+  </div>
+
+  <!-- Hidden audio element -->
+  <audio id="audio-element" preload="auto"></audio>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyBCA6DCMQH4Ncp82OesfdL4RgDE-8MEh4g",
+      authDomain: "storysaadrnd.firebaseapp.com",
+      databaseURL: "https://storysaadrnd-default-rtdb.firebaseio.com",
+      projectId: "storysaadrnd",
+      appId: "1:205726822967:web:e5a5ef3d7486e8d59085b2"
+    };
+    firebase.initializeApp(firebaseConfig);
+    var db = firebase.database();
+    window.db = db;
+    window.fs = firebase.firestore();
+  </script>
+  <script src="app.js"></script>
+  <script type="module" src="activity.js"></script>
+</body>
+</html>
