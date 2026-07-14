@@ -76,6 +76,29 @@ export function buildQuiz(glossary, rng = Math.random) {
 }
 
 /**
+ * buildFixedQuiz — use pre-defined questions (with compound phrases / custom distractors).
+ * Shuffles question order AND option order within each question so every student
+ * sees them in a different arrangement.
+ *
+ * @param {Array<{prompt:string, correct:string, distractors:string[]}>} fixedQuestions
+ * @param {() => number} [rng]  returns [0,1); defaults to Math.random
+ * @returns {Array<{prompt:string, options:string[], correctIndex:number}>}
+ */
+export function buildFixedQuiz(fixedQuestions, rng = Math.random) {
+  const shuffled = fisherYatesShuffle(fixedQuestions, rng);
+  // Take up to QUESTION_COUNT
+  const selected = shuffled.slice(0, QUESTION_COUNT);
+  return selected.map((q) => {
+    const options = fisherYatesShuffle([q.correct, ...q.distractors], rng);
+    return {
+      prompt: q.prompt,
+      options,
+      correctIndex: options.indexOf(q.correct),
+    };
+  });
+}
+
+/**
  * scoreQuiz — count answers whose selected index equals the correct index.
  * A timeout / no selection is represented by null/undefined/-1 and counts as wrong.
  *

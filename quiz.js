@@ -3,7 +3,7 @@
  * Pure generation/scoring/merge live in quiz-core.js; this owns the timer, DOM,
  * confetti, and Firestore persistence.
  */
-import { buildQuiz, scoreQuiz, InsufficientVocabulary, QUESTION_COUNT } from './quiz-core.js';
+import { buildQuiz, buildFixedQuiz, scoreQuiz, InsufficientVocabulary, QUESTION_COUNT } from './quiz-core.js';
 import { getSession } from './auth-core.js';
 
 const QUESTION_MS = 5000;
@@ -96,6 +96,7 @@ async function loadActiveConfig() {
 }
 
 let activeGlossary = null;
+let activeFixedQuestions = null; // pre-defined questions with compound phrases
 let activeMaxAttempts = 1; // how many times a student can take the same quiz round
 let activeStoryId = '';
 let activePartIndex = 0;
@@ -377,6 +378,7 @@ async function startQuiz() {
   try {
     cfg = await loadActiveConfig();
     activeGlossary = meaningfulGlossary(cfg.glossary);
+    activeFixedQuestions = cfg.fixedQuestions || null;
     activeVersion = cfg.version;
     activeMaxAttempts = cfg.maxAttempts;
     activeStoryId = cfg.storyId || '';
@@ -421,9 +423,13 @@ function renderIntro(cfg) {
 }
 
 function runQuiz() {
-  if (!activeGlossary) return;
+  if (!activeGlossary && !activeFixedQuestions) return;
   try {
-    questions = buildQuiz(activeGlossary);
+    if (activeFixedQuestions && activeFixedQuestions.length >= QUESTION_COUNT) {
+      questions = buildFixedQuiz(activeFixedQuestions);
+    } else {
+      questions = buildQuiz(activeGlossary);
+    }
   } catch (e) {
     if (e instanceof InsufficientVocabulary) {
       renderMessage('This lesson does not have enough words for a quiz yet.');
@@ -472,6 +478,7 @@ async function checkMandatoryQuiz() {
   try {
     cfg = await loadActiveConfig();
     activeGlossary = meaningfulGlossary(cfg.glossary);
+    activeFixedQuestions = cfg.fixedQuestions || null;
     activeVersion = cfg.version;
     activeMaxAttempts = cfg.maxAttempts;
     activeStoryId = cfg.storyId || '';
