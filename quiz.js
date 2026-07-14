@@ -87,6 +87,7 @@ async function loadActiveConfig() {
   
   return {
     glossary: glossary,
+    fixedQuestions: cfg.fixedQuestions || null,
     version: Number.isFinite(cfg.version) ? cfg.version : 0,
     storyTitle: storyTitle,
     storyId: cfg.activeStoryId || '',
