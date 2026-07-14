@@ -6,7 +6,7 @@
 import { buildQuiz, buildFixedQuiz, scoreQuiz, InsufficientVocabulary, QUESTION_COUNT } from './quiz-core.js';
 import { getSession } from './auth-core.js';
 
-const QUESTION_MS = 7000;
+const QUESTION_MS = 9000;
 
 // Admin preview mode: no one-attempt gate, no score saving (set on admin.html).
 const PREVIEW = typeof window !== 'undefined' && window.QUIZ_PREVIEW === true;
