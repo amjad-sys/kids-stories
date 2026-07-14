@@ -227,7 +227,7 @@ function renderQuestion() {
     card.classList.add('quiz-pulse');
 
     timer = setTimeout(() => selectAnswer(null), QUESTION_MS); // auto-fail on timeout
-  }, 2000);
+  }, 4000);
 }
 
 function selectAnswer(idx) {
