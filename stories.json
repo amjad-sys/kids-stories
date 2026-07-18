@@ -976,6 +976,96 @@
           }
         }
       ]
+    },
+    {
+      "id": "story-5",
+      "title": "The Fishing Trip",
+      "cover": "assets/stories/story-5/fishing_part1.jpeg",
+      "parts": [
+        {
+          "image": "assets/stories/story-5/fishing_part1.jpeg",
+          "text": "Ali and his friend Tom wanted to go fishing today.\nTom is from another country; his nationality is British.\nThey both love the sea and small boats.",
+          "audio": "assets/stories/story-5/fishing_part1.wav",
+          "glossary": {
+            "fishing": "الصيد",
+            "nationality": "جنسيته"
+          }
+        },
+        {
+          "image": "assets/stories/story-5/fishing_part2.jpeg",
+          "text": "Before leaving, Ali turned on the TV.\nHe changed the channel to find the news.\nThey needed to check the weather first.",
+          "audio": "assets/stories/story-5/fishing_part2.wav",
+          "glossary": {
+            "channel": "قناة"
+          }
+        },
+        {
+          "image": "assets/stories/story-5/fishing_part3.jpeg",
+          "text": "The weather forecast said it was a bad day.\nThe news reporter looked very serious.\nHe asked everyone to stay safe at home.",
+          "audio": "assets/stories/story-5/fishing_part3.wav",
+          "glossary": {
+            "forecast": "نشرة",
+            "serious": "جاداً"
+          }
+        },
+        {
+          "image": "assets/stories/story-5/fishing_part4.jpeg",
+          "text": "The reporter gave more information to the people.\nHe said a big storm was coming fast.\nIt was a dangerous hurricane, not just rain.",
+          "audio": "assets/stories/story-5/fishing_part4.wav",
+          "glossary": {
+            "information": "معلومات",
+            "hurricane": "إعصاراً"
+          }
+        },
+        {
+          "image": "assets/stories/story-5/fishing_part5.jpeg",
+          "text": "He said the wind will move at a very high speed.\nThe sea waves will be very tall and scary.\nGoing to the beach was a very bad idea.",
+          "audio": "assets/stories/story-5/fishing_part5.wav",
+          "glossary": {
+            "speed": "سرعة"
+          }
+        },
+        {
+          "image": "assets/stories/story-5/fishing_part6.jpeg",
+          "text": "Ali looked at Tom and said, \"We cannot go.\"\nTom said, \"Yes, it is better to stay inside.\"\nThey closed the windows and locked the doors.",
+          "audio": "assets/stories/story-5/fishing_part6.wav",
+          "glossary": {
+            "fishing": "صيد"
+          }
+        },
+        {
+          "image": "assets/stories/story-5/fishing_part7.jpeg",
+          "text": "\"What should we do now?\" asked Tom.\nAli said, \"I know you like animals.\"\n\"Let's watch a nice program on TV.\"",
+          "audio": "assets/stories/story-5/fishing_part7.wav",
+          "glossary": {
+            "like": "تحب"
+          }
+        },
+        {
+          "image": "assets/stories/story-5/fishing_part8.jpeg",
+          "text": "They found a documentary about the ocean.\nIt showed the deep sea and colorful plants.\nThey sat on the sofa and ate some popcorn.",
+          "audio": "assets/stories/story-5/fishing_part8.wav",
+          "glossary": {
+            "documentary": "وثائقياً"
+          }
+        },
+        {
+          "image": "assets/stories/story-5/fishing_part9.jpeg",
+          "text": "Suddenly, a big blue fish appeared on the screen.\nTom smiled and said, \"Wow, look at that!\"\nAli laughed and said, \"It is very beautiful.\"",
+          "audio": "assets/stories/story-5/fishing_part9.wav",
+          "glossary": {
+            "fish": "سمكة"
+          }
+        },
+        {
+          "image": "assets/stories/story-5/fishing_part10.jpeg",
+          "text": "They stayed safe and warm all day long.\nThe storm passed, and the sun came out again.\nThey promised to try their trip tomorrow instead.",
+          "audio": "assets/stories/story-5/fishing_part10.wav",
+          "glossary": {
+            "fishing": "صيد"
+          }
+        }
+      ]
     }
   ]
 }

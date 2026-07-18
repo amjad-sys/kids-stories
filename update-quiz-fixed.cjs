@@ -18,11 +18,11 @@ const fixedQuestions = [
   { prompt: "شجاع", correct: "brave", distractors: ["fine", "thief", "checks"] },
   { prompt: "تنظر", correct: "looks", distractors: ["checks", "arrive", "arrest"] },
   // ── Compound phrase questions (5) ──
-  { prompt: "وصلت الشرطة", correct: "police arrive", distractors: ["police arrest", "girls arrive", "police checks"] },
-  { prompt: "يعتقلون اللص", correct: "arrest the thief", distractors: ["arrive the thief", "checks the thief", "arrest the girl"] },
-  { prompt: "الطبيب يفحص", correct: "doctor checks", distractors: ["doctor looks", "doctor arrive", "brave doctor"] },
-  { prompt: "فتاة شجاعة", correct: "brave girl", distractors: ["brave doctor", "fine girl", "brave one"] },
-  { prompt: "هي بخير", correct: "she is fine", distractors: ["she is brave", "she looks", "she checks"] },
+  { prompt: "وصلت الفتيات", correct: "girls arrive", distractors: ["police arrive", "girls arrest", "doctor arrive"] },
+  { prompt: "يعتقلون الطبيب", correct: "arrest doctor", distractors: ["arrest thief", "doctor checks", "doctor looks"] },
+  { prompt: "لص شجاع", correct: "brave thief", distractors: ["brave girl", "brave doctor", "fine thief"] },
+  { prompt: "يفحص اللص", correct: "checks thief", distractors: ["arrest thief", "checks doctor", "thief looks"] },
+  { prompt: "فتاة تنظر", correct: "girl looks", distractors: ["doctor looks", "girl checks", "brave girl"] },
 ];
 
 async function run() {
