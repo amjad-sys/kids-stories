@@ -987,8 +987,23 @@
           "text": "Ali and his friend Tom wanted to go fishing today.\nTom is from another country; his nationality is British.\nThey both love the sea and small boats.",
           "audio": "assets/stories/story-5/fishing_part1.wav",
           "glossary": {
-            "fishing": "الصيد",
-            "nationality": "جنسيته"
+            "friend": "صَديق (فريند)",
+            "wanted": "أَرادَ (وانتيد)",
+            "go": "يَذهَب (غو)",
+            "fishing": "الصَّيد (فِشينغ)",
+            "today": "اليَوم (توداي)",
+            "from": "مِن (فروم)",
+            "another": "آخَر (أناذر)",
+            "country": "بَلَد (كانتري)",
+            "his": "خاصَّتُه (هِز)",
+            "nationality": "جِنسيَّة (ناشوناليتي)",
+            "british": "بِريطانِي (بريتيش)",
+            "they": "هُم (ذي)",
+            "both": "كِلاهُما (بوث)",
+            "love": "يُحِبّ (لاڤ)",
+            "sea": "البَحر (سي)",
+            "small": "صَغير (سمول)",
+            "boats": "قَوارِب (بوتس)"
           }
         },
         {
@@ -996,7 +1011,18 @@
           "text": "Before leaving, Ali turned on the TV.\nHe changed the channel to find the news.\nThey needed to check the weather first.",
           "audio": "assets/stories/story-5/fishing_part2.wav",
           "glossary": {
-            "channel": "قناة"
+            "before": "قَبلَ (بيفور)",
+            "leaving": "المُغادَرَة (ليفينغ)",
+            "turned": "شَغَّلَ (تيرند)",
+            "on": "تَشغيل (أون)",
+            "changed": "غَيَّرَ (تشينجد)",
+            "channel": "قَناة (تشانيل)",
+            "find": "يَجِد (فايند)",
+            "news": "أَخبار (نيوز)",
+            "needed": "احتاجوا (نيديد)",
+            "check": "يَتَحَقَّق (تشيك)",
+            "weather": "طَقس (ويذر)",
+            "first": "أَوَّلاً (فيرست)"
           }
         },
         {
@@ -1004,8 +1030,19 @@
           "text": "The weather forecast said it was a bad day.\nThe news reporter looked very serious.\nHe asked everyone to stay safe at home.",
           "audio": "assets/stories/story-5/fishing_part3.wav",
           "glossary": {
-            "forecast": "نشرة",
-            "serious": "جاداً"
+            "forecast": "نَشرَة (فوركاست)",
+            "said": "قالَ (سيد)",
+            "bad": "سَيِّء (باد)",
+            "day": "يَوم (داي)",
+            "reporter": "مُراسِل (ريبورتر)",
+            "looked": "بَدا (لوكد)",
+            "very": "جِدّاً (ڤيري)",
+            "serious": "جاد (سيريوس)",
+            "asked": "طَلَبَ (آسكد)",
+            "everyone": "الجَميع (إڤري وان)",
+            "stay": "يَبقى (ستاي)",
+            "safe": "آمِن (سيف)",
+            "home": "مَنزِل (هوم)"
           }
         },
         {
@@ -1013,8 +1050,19 @@
           "text": "The reporter gave more information to the people.\nHe said a big storm was coming fast.\nIt was a dangerous hurricane, not just rain.",
           "audio": "assets/stories/story-5/fishing_part4.wav",
           "glossary": {
-            "information": "معلومات",
-            "hurricane": "إعصاراً"
+            "gave": "أَعطى (قيڤ)",
+            "more": "المَزيد (مور)",
+            "information": "مَعلومات (إنفورميشن)",
+            "people": "الناس (بيبول)",
+            "big": "كبير (بيغ)",
+            "storm": "عاصِفَة (ستورم)",
+            "coming": "قادِمَة (كامينغ)",
+            "fast": "بِسُرعَة (فاست)",
+            "dangerous": "خَطير (دينجيروس)",
+            "hurricane": "إِعصار (هوريكين)",
+            "not": "لَيسَ (نوت)",
+            "just": "مُجَرَّد (جست)",
+            "rain": "مَطَر (رين)"
           }
         },
         {
@@ -1022,7 +1070,17 @@
           "text": "He said the wind will move at a very high speed.\nThe sea waves will be very tall and scary.\nGoing to the beach was a very bad idea.",
           "audio": "assets/stories/story-5/fishing_part5.wav",
           "glossary": {
-            "speed": "سرعة"
+            "wind": "رِياح (ويند)",
+            "will": "سَوفَ (ويل)",
+            "move": "تَتَحَرَّك (موڤ)",
+            "high": "عالي (هاي)",
+            "speed": "سُرعَة (سبيد)",
+            "waves": "أَمواج (ويڤز)",
+            "tall": "عالي (تول)",
+            "scary": "مُخيف (سكيري)",
+            "going": "الذَّهاب (قوينغ)",
+            "beach": "شاطِئ (بيتش)",
+            "idea": "فِكرَة (آيديا)"
           }
         },
         {
@@ -1030,7 +1088,14 @@
           "text": "Ali looked at Tom and said, \"We cannot go.\"\nTom said, \"Yes, it is better to stay inside.\"\nThey closed the windows and locked the doors.",
           "audio": "assets/stories/story-5/fishing_part6.wav",
           "glossary": {
-            "fishing": "صيد"
+            "cannot": "لا يَستَطيع (كان نوت)",
+            "yes": "نَعَم (يس)",
+            "better": "أَفضَل (بيتر)",
+            "inside": "في الدّاخِل (إنسايد)",
+            "closed": "أَغلَقوا (كلوزد)",
+            "windows": "نَوافِذ (ويندوز)",
+            "locked": "أَقفَلوا (لوكد)",
+            "doors": "أَبواب (دورز)"
           }
         },
         {
@@ -1038,7 +1103,18 @@
           "text": "\"What should we do now?\" asked Tom.\nAli said, \"I know you like animals.\"\n\"Let's watch a nice program on TV.\"",
           "audio": "assets/stories/story-5/fishing_part7.wav",
           "glossary": {
-            "like": "تحب"
+            "what": "ماذا (وات)",
+            "should": "يَجِب (شود)",
+            "do": "نَفعَل (دو)",
+            "now": "الآن (ناو)",
+            "know": "أَعرِف (نو)",
+            "you": "أَنتَ (يو)",
+            "like": "تُحِبّ (لايك)",
+            "animals": "حَيَوانات (أنيمالز)",
+            "let's": "دَعنا (ليتس)",
+            "watch": "نُشاهِد (ووتش)",
+            "nice": "لَطيف (نايس)",
+            "program": "بَرنامَج (بروقرام)"
           }
         },
         {
@@ -1046,7 +1122,19 @@
           "text": "They found a documentary about the ocean.\nIt showed the deep sea and colorful plants.\nThey sat on the sofa and ate some popcorn.",
           "audio": "assets/stories/story-5/fishing_part8.wav",
           "glossary": {
-            "documentary": "وثائقياً"
+            "found": "وَجَدوا (فاوند)",
+            "documentary": "وَثائِقي (دوكيومنتري)",
+            "about": "عَن (أباوت)",
+            "ocean": "مُحيط (أوشن)",
+            "showed": "أَظهَرَ (شود)",
+            "deep": "عَميق (ديب)",
+            "colorful": "مُلَوَّن (كالرفول)",
+            "plants": "نَباتات (بلانتس)",
+            "sat": "جَلَسوا (سات)",
+            "sofa": "أَريكَة (صوفا)",
+            "ate": "أَكَلوا (إيت)",
+            "some": "بَعض (صم)",
+            "popcorn": "فِشار (بوب كورن)"
           }
         },
         {
@@ -1054,7 +1142,17 @@
           "text": "Suddenly, a big blue fish appeared on the screen.\nTom smiled and said, \"Wow, look at that!\"\nAli laughed and said, \"It is very beautiful.\"",
           "audio": "assets/stories/story-5/fishing_part9.wav",
           "glossary": {
-            "fish": "سمكة"
+            "suddenly": "فَجأَة (صَدِنلي)",
+            "blue": "أَزرَق (بلو)",
+            "fish": "سَمَكَة (فِش)",
+            "appeared": "ظَهَرَت (أبيرد)",
+            "screen": "شاشَة (سكرين)",
+            "smiled": "ابتَسَمَ (سمايلد)",
+            "wow": "واو (واو)",
+            "look": "انظُر (لوك)",
+            "that": "ذَلِك (ذات)",
+            "laughed": "ضَحِكَ (لافت)",
+            "beautiful": "جَميل (بيوتيفول)"
           }
         },
         {
@@ -1062,7 +1160,20 @@
           "text": "They stayed safe and warm all day long.\nThe storm passed, and the sun came out again.\nThey promised to try their trip tomorrow instead.",
           "audio": "assets/stories/story-5/fishing_part10.wav",
           "glossary": {
-            "fishing": "صيد"
+            "stayed": "بَقوا (ستايد)",
+            "warm": "دافِئ (وورم)",
+            "all": "طَوال (أول)",
+            "long": "طَويل (لونغ)",
+            "passed": "مَرَّت (باست)",
+            "sun": "شَمس (صَن)",
+            "came": "خَرَجَت (كيم)",
+            "out": "خارِج (آوت)",
+            "again": "مَرَّة أُخرى (أقين)",
+            "promised": "وَعَدوا (بروميست)",
+            "try": "نُجَرِّب (تراي)",
+            "trip": "رِحلَة (تريب)",
+            "tomorrow": "غَداً (تومورو)",
+            "instead": "بَدَلاً مِن ذَلِكَ (إنستيد)"
           }
         }
       ]
