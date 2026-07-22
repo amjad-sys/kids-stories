@@ -3534,3 +3534,170 @@ body.quiz-locked { overflow: hidden; }
   border: none;
   background: #000;
 }
+
+/* ══════════════════════════════════════════
+   GRAMMAR FLASHCARD OVERLAY
+   ══════════════════════════════════════════ */
+
+.flashcard-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: flashcard-fadeIn 0.35s ease;
+  padding: 16px;
+}
+.flashcard-overlay.hidden {
+  display: none;
+}
+
+@keyframes flashcard-fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.flashcard-card {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  background: linear-gradient(145deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border-radius: 24px;
+  padding: 28px 22px 22px;
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.5),
+    0 0 0 1px rgba(255,255,255,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+  animation: flashcard-slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-align: center;
+}
+
+@keyframes flashcard-slideUp {
+  from { transform: translateY(40px) scale(0.95); opacity: 0; }
+  to   { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.flashcard-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.7);
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+.flashcard-close:hover {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.flashcard-emoji {
+  font-size: 40px;
+  margin-bottom: 6px;
+}
+
+.flashcard-title {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffd700;
+  margin: 0 0 18px;
+  text-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+}
+
+.flashcard-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.flashcard-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 12px 14px;
+  text-align: right;
+  direction: ltr;
+  transition: all 0.2s ease;
+}
+.flashcard-row:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.15);
+}
+
+.flashcard-pronoun {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  min-width: 48px;
+  text-align: center;
+  padding: 4px 8px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.flashcard-pronoun-i    { color: #00e5ff; background: rgba(0,229,255,0.12); }
+.flashcard-pronoun-she  { color: #ff6ec7; background: rgba(255,110,199,0.12); }
+.flashcard-pronoun-they { color: #69f0ae; background: rgba(105,240,174,0.12); }
+.flashcard-pronoun-we   { color: #ffd740; background: rgba(255,215,64,0.12); }
+
+.flashcard-sentence {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.92);
+  flex: 1;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.flashcard-sentence strong {
+  color: #ffd700;
+  font-weight: 700;
+}
+
+.flashcard-translation {
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  direction: rtl;
+  text-align: right;
+  min-width: 60px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 400px) {
+  .flashcard-card {
+    padding: 22px 16px 18px;
+    border-radius: 18px;
+  }
+  .flashcard-row {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  .flashcard-pronoun {
+    font-size: 1rem;
+    min-width: 40px;
+  }
+  .flashcard-sentence {
+    font-size: 0.9rem;
+  }
+  .flashcard-translation {
+    font-size: 0.75rem;
+  }
+}

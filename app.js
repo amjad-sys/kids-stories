@@ -100,6 +100,103 @@
   let isPlaying = false;
   let currentGlossary = {};
 
+  // ══════════════════════════════════════════
+  //  GRAMMAR FLASHCARD DATA
+  // ══════════════════════════════════════════
+  const FLASHCARD_DATA = {
+    'story-5': {
+      4: { // Part 5 (index 4) — simple: brave
+        rows: [
+          { pronoun: 'I', css: 'i', sentence: 'I <strong>am</strong> brave.', translation: 'أنا شُجاع' },
+          { pronoun: 'She', css: 'she', sentence: 'She <strong>is</strong> brave.', translation: 'هي شُجاعة' },
+          { pronoun: 'They', css: 'they', sentence: 'They <strong>are</strong> brave.', translation: 'هم شُجعان' },
+          { pronoun: 'We', css: 'we', sentence: 'We <strong>are</strong> brave.', translation: 'نحن شُجعان' }
+        ]
+      },
+      5: { // Part 6 (index 5) — simple: hungry
+        rows: [
+          { pronoun: 'I', css: 'i', sentence: 'I <strong>am</strong> hungry.', translation: 'أنا جائع' },
+          { pronoun: 'She', css: 'she', sentence: 'She <strong>is</strong> hungry.', translation: 'هي جائعة' },
+          { pronoun: 'They', css: 'they', sentence: 'They <strong>are</strong> hungry.', translation: 'هم جائعون' },
+          { pronoun: 'We', css: 'we', sentence: 'We <strong>are</strong> hungry.', translation: 'نحن جائعون' }
+        ]
+      },
+      6: { // Part 7 (index 6) — two adjectives
+        rows: [
+          { pronoun: 'I', css: 'i', sentence: 'I <strong>am</strong> happy and safe.', translation: 'أنا سعيد وآمن' },
+          { pronoun: 'She', css: 'she', sentence: 'She <strong>is</strong> happy and safe.', translation: 'هي سعيدة وآمنة' },
+          { pronoun: 'They', css: 'they', sentence: 'They <strong>are</strong> happy and safe.', translation: 'هم سعداء وآمنون' },
+          { pronoun: 'We', css: 'we', sentence: 'We <strong>are</strong> happy and safe.', translation: 'نحن سعداء وآمنون' }
+        ]
+      },
+      7: { // Part 8 (index 7) — adjective + place
+        rows: [
+          { pronoun: 'I', css: 'i', sentence: 'I <strong>am</strong> tired at home.', translation: 'أنا تعبان في البيت' },
+          { pronoun: 'She', css: 'she', sentence: 'She <strong>is</strong> tired at home.', translation: 'هي تعبانة في البيت' },
+          { pronoun: 'They', css: 'they', sentence: 'They <strong>are</strong> tired at home.', translation: 'هم تعبانين في البيت' },
+          { pronoun: 'We', css: 'we', sentence: 'We <strong>are</strong> tired at home.', translation: 'نحن تعبانين في البيت' }
+        ]
+      },
+      8: { // Part 9 (index 8) — verb + object
+        rows: [
+          { pronoun: 'I', css: 'i', sentence: 'I <strong>want</strong> to drink water.', translation: 'أنا أريد أن أشرب ماء' },
+          { pronoun: 'She', css: 'she', sentence: 'She <strong>wants</strong> to drink water.', translation: 'هي تريد أن تشرب ماء' },
+          { pronoun: 'They', css: 'they', sentence: 'They <strong>want</strong> to drink water.', translation: 'هم يريدون أن يشربوا ماء' },
+          { pronoun: 'We', css: 'we', sentence: 'We <strong>want</strong> to drink water.', translation: 'نحن نريد أن نشرب ماء' }
+        ]
+      },
+      9: { // Part 10 (index 9) — verb + place
+        rows: [
+          { pronoun: 'I', css: 'i', sentence: 'I <strong>like</strong> to go to the beach.', translation: 'أنا أحب الذهاب للشاطئ' },
+          { pronoun: 'She', css: 'she', sentence: 'She <strong>likes</strong> to go to the beach.', translation: 'هي تحب الذهاب للشاطئ' },
+          { pronoun: 'They', css: 'they', sentence: 'They <strong>like</strong> to go to the beach.', translation: 'هم يحبون الذهاب للشاطئ' },
+          { pronoun: 'We', css: 'we', sentence: 'We <strong>like</strong> to go to the beach.', translation: 'نحن نحب الذهاب للشاطئ' }
+        ]
+      }
+    }
+  };
+
+  // ── Flashcard DOM ──
+  const flashcardOverlay = document.getElementById('flashcard-overlay');
+  const flashcardClose = document.getElementById('flashcard-close');
+  const flashcardTitle = document.getElementById('flashcard-title');
+  const flashcardRows = document.getElementById('flashcard-rows');
+
+  if (flashcardClose) {
+    flashcardClose.addEventListener('click', function() {
+      flashcardOverlay.classList.add('hidden');
+    });
+  }
+  // Also close if clicking outside the card
+  if (flashcardOverlay) {
+    flashcardOverlay.addEventListener('click', function(e) {
+      if (e.target === flashcardOverlay) {
+        flashcardOverlay.classList.add('hidden');
+      }
+    });
+  }
+
+  function showFlashcard(storyId, partIndex) {
+    var storyCards = FLASHCARD_DATA[storyId];
+    if (!storyCards) return false;
+    var card = storyCards[partIndex];
+    if (!card) return false;
+
+    flashcardRows.innerHTML = '';
+    card.rows.forEach(function(row) {
+      var div = document.createElement('div');
+      div.className = 'flashcard-row';
+      div.innerHTML =
+        '<span class="flashcard-pronoun flashcard-pronoun-' + row.css + '">' + row.pronoun + '</span>' +
+        '<span class="flashcard-sentence">' + row.sentence + '</span>' +
+        '<span class="flashcard-translation">' + row.translation + '</span>';
+      flashcardRows.appendChild(div);
+    });
+
+    flashcardOverlay.classList.remove('hidden');
+    return true;
+  }
+
   // ── Get story ID from URL ──
   const urlParams = new URLSearchParams(window.location.search);
   const storyId = urlParams.get('story');
@@ -394,6 +491,9 @@
     hideTooltip();
 
     var part = currentStory.parts[index];
+
+    // Show grammar flashcard if available for this part
+    showFlashcard(storyId, index);
 
     // If this part has a video, play it first
     if (part.video) {
