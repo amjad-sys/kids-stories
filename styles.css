@@ -3653,9 +3653,12 @@ body.quiz-locked { overflow: hidden; }
 }
 
 .flashcard-pronoun-i    { color: #00e5ff; background: rgba(0,229,255,0.12); }
+.flashcard-pronoun-he   { color: #ff9100; background: rgba(255,145,0,0.12); }
 .flashcard-pronoun-she  { color: #ff6ec7; background: rgba(255,110,199,0.12); }
+.flashcard-pronoun-it   { color: #b388ff; background: rgba(179,136,255,0.12); }
 .flashcard-pronoun-they { color: #69f0ae; background: rgba(105,240,174,0.12); }
 .flashcard-pronoun-we   { color: #ffd740; background: rgba(255,215,64,0.12); }
+.flashcard-pronoun-you  { color: #ff5252; background: rgba(255,82,82,0.12); }
 
 .flashcard-sentence {
   font-family: 'Baloo 2', sans-serif;
