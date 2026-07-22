@@ -113,7 +113,7 @@
           { pronoun: 'She', css: 'she', sentence: 'She <strong>is</strong> brave.', translation: 'هي شُجاعة' },
           { pronoun: 'We', css: 'we', sentence: 'We <strong>are</strong> brave.', translation: 'نحن شُجعان' },
           { pronoun: 'They', css: 'they', sentence: 'They <strong>are</strong> brave.', translation: 'هم شُجعان' },
-          { pronoun: 'It', css: 'it', sentence: 'It <strong>is</strong> brave.', translation: 'هو/هي شُجاع/ة (لغير العاقل)' }
+          { pronoun: 'It 🐶', css: 'it', sentence: 'It <strong>is</strong> brave.', translation: 'هو/هي شُجاع/ة (لغير العاقل)' }
         ]
       },
       5: { // Part 6 (index 5) — simple: hungry
@@ -124,7 +124,7 @@
           { pronoun: 'She', css: 'she', sentence: 'She <strong>is</strong> hungry.', translation: 'هي جائعة' },
           { pronoun: 'We', css: 'we', sentence: 'We <strong>are</strong> hungry.', translation: 'نحن جائعون' },
           { pronoun: 'They', css: 'they', sentence: 'They <strong>are</strong> hungry.', translation: 'هم جائعون' },
-          { pronoun: 'It', css: 'it', sentence: 'It <strong>is</strong> hungry.', translation: 'هو/هي جائع/ة' }
+          { pronoun: 'It 🐱', css: 'it', sentence: 'It <strong>is</strong> hungry.', translation: 'هو/هي جائع/ة' }
         ]
       },
       6: { // Part 7 (index 6) — two adjectives
@@ -135,7 +135,7 @@
           { pronoun: 'She', css: 'she', sentence: 'She <strong>is</strong> happy and safe.', translation: 'هي سعيدة وآمنة' },
           { pronoun: 'We', css: 'we', sentence: 'We <strong>are</strong> happy and safe.', translation: 'نحن سعداء وآمنون' },
           { pronoun: 'They', css: 'they', sentence: 'They <strong>are</strong> happy and safe.', translation: 'هم سعداء وآمنون' },
-          { pronoun: 'It', css: 'it', sentence: 'It <strong>is</strong> happy and safe.', translation: 'هو/هي سعيد/ة وآمن/ة' }
+          { pronoun: 'It 🐦', css: 'it', sentence: 'It <strong>is</strong> happy and safe.', translation: 'هو/هي سعيد/ة وآمن/ة' }
         ]
       },
       7: { // Part 8 (index 7) — adjective + place
@@ -146,7 +146,7 @@
           { pronoun: 'She', css: 'she', sentence: 'She <strong>is</strong> tired at home.', translation: 'هي تعبانة في البيت' },
           { pronoun: 'We', css: 'we', sentence: 'We <strong>are</strong> tired at home.', translation: 'نحن تعبانين' },
           { pronoun: 'They', css: 'they', sentence: 'They <strong>are</strong> tired at home.', translation: 'هم تعبانين' },
-          { pronoun: 'It', css: 'it', sentence: 'It <strong>is</strong> tired at home.', translation: 'هو/هي تعبان/ة' }
+          { pronoun: 'It 🐠', css: 'it', sentence: 'It <strong>is</strong> tired at home.', translation: 'هو/هي تعبان/ة' }
         ]
       },
       8: { // Part 9 (index 8) — verb + object
@@ -157,7 +157,7 @@
           { pronoun: 'She', css: 'she', sentence: 'She <strong>wants</strong> to drink water.', translation: 'هي تريد أن تشرب ماء' },
           { pronoun: 'We', css: 'we', sentence: 'We <strong>want</strong> to drink water.', translation: 'نحن نريد' },
           { pronoun: 'They', css: 'they', sentence: 'They <strong>want</strong> to drink water.', translation: 'هم يريدون' },
-          { pronoun: 'It', css: 'it', sentence: 'It <strong>wants</strong> to drink water.', translation: 'هو/هي يريد/تريد' }
+          { pronoun: 'It 🐸', css: 'it', sentence: 'It <strong>wants</strong> to drink water.', translation: 'هو/هي يريد/تريد' }
         ]
       },
       9: { // Part 10 (index 9) — verb + place
@@ -168,7 +168,7 @@
           { pronoun: 'She', css: 'she', sentence: 'She <strong>likes</strong> to go to the beach.', translation: 'هي تحب الذهاب' },
           { pronoun: 'We', css: 'we', sentence: 'We <strong>like</strong> to go to the beach.', translation: 'نحن نحب' },
           { pronoun: 'They', css: 'they', sentence: 'They <strong>like</strong> to go to the beach.', translation: 'هم يحبون' },
-          { pronoun: 'It', css: 'it', sentence: 'It <strong>likes</strong> to go to the beach.', translation: 'هو/هي يحب/تحب' }
+          { pronoun: 'It 🐵', css: 'it', sentence: 'It <strong>likes</strong> to go to the beach.', translation: 'هو/هي يحب/تحب' }
         ]
       }
     }
