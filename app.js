@@ -108,67 +108,67 @@
       4: { // Part 5 (index 4) — simple: brave
         rows: [
           { pronoun: 'I', css: 'i', sentence: 'I <strong>am</strong> brave.', translation: 'أنا شُجاع' },
+          { pronoun: 'You', css: 'you', sentence: 'You <strong>are</strong> brave.', translation: 'أنتَ/أنتِ شُجاع/ة' },
           { pronoun: 'He', css: 'he', sentence: 'He <strong>is</strong> brave.', translation: 'هو شُجاع' },
           { pronoun: 'She', css: 'she', sentence: 'She <strong>is</strong> brave.', translation: 'هي شُجاعة' },
-          { pronoun: 'It', css: 'it', sentence: 'It <strong>is</strong> brave.', translation: 'هو/هي شُجاع/ة (لغير العاقل)' },
-          { pronoun: 'They', css: 'they', sentence: 'They <strong>are</strong> brave.', translation: 'هم شُجعان' },
           { pronoun: 'We', css: 'we', sentence: 'We <strong>are</strong> brave.', translation: 'نحن شُجعان' },
-          { pronoun: 'You', css: 'you', sentence: 'You <strong>are</strong> brave.', translation: 'أنتَ/أنتِ شُجاع/ة' }
+          { pronoun: 'They', css: 'they', sentence: 'They <strong>are</strong> brave.', translation: 'هم شُجعان' },
+          { pronoun: 'It', css: 'it', sentence: 'It <strong>is</strong> brave.', translation: 'هو/هي شُجاع/ة (لغير العاقل)' }
         ]
       },
       5: { // Part 6 (index 5) — simple: hungry
         rows: [
           { pronoun: 'I', css: 'i', sentence: 'I <strong>am</strong> hungry.', translation: 'أنا جائع' },
+          { pronoun: 'You', css: 'you', sentence: 'You <strong>are</strong> hungry.', translation: 'أنتَ/أنتِ جائع/ة' },
           { pronoun: 'He', css: 'he', sentence: 'He <strong>is</strong> hungry.', translation: 'هو جائع' },
           { pronoun: 'She', css: 'she', sentence: 'She <strong>is</strong> hungry.', translation: 'هي جائعة' },
-          { pronoun: 'It', css: 'it', sentence: 'It <strong>is</strong> hungry.', translation: 'هو/هي جائع/ة' },
-          { pronoun: 'They', css: 'they', sentence: 'They <strong>are</strong> hungry.', translation: 'هم جائعون' },
           { pronoun: 'We', css: 'we', sentence: 'We <strong>are</strong> hungry.', translation: 'نحن جائعون' },
-          { pronoun: 'You', css: 'you', sentence: 'You <strong>are</strong> hungry.', translation: 'أنتَ/أنتِ جائع/ة' }
+          { pronoun: 'They', css: 'they', sentence: 'They <strong>are</strong> hungry.', translation: 'هم جائعون' },
+          { pronoun: 'It', css: 'it', sentence: 'It <strong>is</strong> hungry.', translation: 'هو/هي جائع/ة' }
         ]
       },
       6: { // Part 7 (index 6) — two adjectives
         rows: [
           { pronoun: 'I', css: 'i', sentence: 'I <strong>am</strong> happy and safe.', translation: 'أنا سعيد وآمن' },
+          { pronoun: 'You', css: 'you', sentence: 'You <strong>are</strong> happy and safe.', translation: 'أنتَ/أنتِ سعيد/ة وآمن/ة' },
           { pronoun: 'He', css: 'he', sentence: 'He <strong>is</strong> happy and safe.', translation: 'هو سعيد وآمن' },
           { pronoun: 'She', css: 'she', sentence: 'She <strong>is</strong> happy and safe.', translation: 'هي سعيدة وآمنة' },
-          { pronoun: 'It', css: 'it', sentence: 'It <strong>is</strong> happy and safe.', translation: 'هو/هي سعيد/ة وآمن/ة' },
-          { pronoun: 'They', css: 'they', sentence: 'They <strong>are</strong> happy and safe.', translation: 'هم سعداء وآمنون' },
           { pronoun: 'We', css: 'we', sentence: 'We <strong>are</strong> happy and safe.', translation: 'نحن سعداء وآمنون' },
-          { pronoun: 'You', css: 'you', sentence: 'You <strong>are</strong> happy and safe.', translation: 'أنتَ/أنتِ سعيد/ة وآمن/ة' }
+          { pronoun: 'They', css: 'they', sentence: 'They <strong>are</strong> happy and safe.', translation: 'هم سعداء وآمنون' },
+          { pronoun: 'It', css: 'it', sentence: 'It <strong>is</strong> happy and safe.', translation: 'هو/هي سعيد/ة وآمن/ة' }
         ]
       },
       7: { // Part 8 (index 7) — adjective + place
         rows: [
           { pronoun: 'I', css: 'i', sentence: 'I <strong>am</strong> tired at home.', translation: 'أنا تعبان في البيت' },
+          { pronoun: 'You', css: 'you', sentence: 'You <strong>are</strong> tired at home.', translation: 'أنتَ تعبان' },
           { pronoun: 'He', css: 'he', sentence: 'He <strong>is</strong> tired at home.', translation: 'هو تعبان في البيت' },
           { pronoun: 'She', css: 'she', sentence: 'She <strong>is</strong> tired at home.', translation: 'هي تعبانة في البيت' },
-          { pronoun: 'It', css: 'it', sentence: 'It <strong>is</strong> tired at home.', translation: 'هو/هي تعبان/ة' },
-          { pronoun: 'They', css: 'they', sentence: 'They <strong>are</strong> tired at home.', translation: 'هم تعبانين' },
           { pronoun: 'We', css: 'we', sentence: 'We <strong>are</strong> tired at home.', translation: 'نحن تعبانين' },
-          { pronoun: 'You', css: 'you', sentence: 'You <strong>are</strong> tired at home.', translation: 'أنتَ تعبان' }
+          { pronoun: 'They', css: 'they', sentence: 'They <strong>are</strong> tired at home.', translation: 'هم تعبانين' },
+          { pronoun: 'It', css: 'it', sentence: 'It <strong>is</strong> tired at home.', translation: 'هو/هي تعبان/ة' }
         ]
       },
       8: { // Part 9 (index 8) — verb + object
         rows: [
           { pronoun: 'I', css: 'i', sentence: 'I <strong>want</strong> to drink water.', translation: 'أنا أريد أن أشرب ماء' },
+          { pronoun: 'You', css: 'you', sentence: 'You <strong>want</strong> to drink water.', translation: 'أنتَ تريد' },
           { pronoun: 'He', css: 'he', sentence: 'He <strong>wants</strong> to drink water.', translation: 'هو يريد أن يشرب ماء' },
           { pronoun: 'She', css: 'she', sentence: 'She <strong>wants</strong> to drink water.', translation: 'هي تريد أن تشرب ماء' },
-          { pronoun: 'It', css: 'it', sentence: 'It <strong>wants</strong> to drink water.', translation: 'هو/هي يريد/تريد' },
-          { pronoun: 'They', css: 'they', sentence: 'They <strong>want</strong> to drink water.', translation: 'هم يريدون' },
           { pronoun: 'We', css: 'we', sentence: 'We <strong>want</strong> to drink water.', translation: 'نحن نريد' },
-          { pronoun: 'You', css: 'you', sentence: 'You <strong>want</strong> to drink water.', translation: 'أنتَ تريد' }
+          { pronoun: 'They', css: 'they', sentence: 'They <strong>want</strong> to drink water.', translation: 'هم يريدون' },
+          { pronoun: 'It', css: 'it', sentence: 'It <strong>wants</strong> to drink water.', translation: 'هو/هي يريد/تريد' }
         ]
       },
       9: { // Part 10 (index 9) — verb + place
         rows: [
           { pronoun: 'I', css: 'i', sentence: 'I <strong>like</strong> to go to the beach.', translation: 'أنا أحب الذهاب للشاطئ' },
+          { pronoun: 'You', css: 'you', sentence: 'You <strong>like</strong> to go to the beach.', translation: 'أنتَ تحب' },
           { pronoun: 'He', css: 'he', sentence: 'He <strong>likes</strong> to go to the beach.', translation: 'هو يحب الذهاب للشاطئ' },
           { pronoun: 'She', css: 'she', sentence: 'She <strong>likes</strong> to go to the beach.', translation: 'هي تحب الذهاب' },
-          { pronoun: 'It', css: 'it', sentence: 'It <strong>likes</strong> to go to the beach.', translation: 'هو/هي يحب/تحب' },
-          { pronoun: 'They', css: 'they', sentence: 'They <strong>like</strong> to go to the beach.', translation: 'هم يحبون' },
           { pronoun: 'We', css: 'we', sentence: 'We <strong>like</strong> to go to the beach.', translation: 'نحن نحب' },
-          { pronoun: 'You', css: 'you', sentence: 'You <strong>like</strong> to go to the beach.', translation: 'أنتَ تحب' }
+          { pronoun: 'They', css: 'they', sentence: 'They <strong>like</strong> to go to the beach.', translation: 'هم يحبون' },
+          { pronoun: 'It', css: 'it', sentence: 'It <strong>likes</strong> to go to the beach.', translation: 'هو/هي يحب/تحب' }
         ]
       }
     }
