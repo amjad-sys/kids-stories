@@ -1278,7 +1278,7 @@
         {
           "image": "assets/stories/story-5/fishing_part6.jpeg",
           "text": "Ali looked at Tom and said, \"We cannot go.\"\nTom said, \"Yes, it is better to stay inside.\"\nThey closed the windows and locked the doors.",
-          "htmlText": "Ali <span class='interactive-word' data-visual='👀' data-type='emoji'>looked</span> at Tom and said, \"We cannot go.\"\nTom said, \"Yes, it is better to <span class='interactive-word' data-visual='🏠' data-type='emoji'>stay inside</span>.\"\nThey <span class='interactive-word' data-visual='assets/gifs/closed_window.gif' data-type='gif'>closed</span> the <span class='interactive-word' data-visual='🪟' data-type='emoji'>windows</span> and <span class='interactive-word' data-visual='assets/gifs/padlock.gif' data-type='gif'>locked</span> the <span class='interactive-word' data-visual='🚪' data-type='emoji'>doors</span>.",
+          "htmlText": "Ali <span class='interactive-word' data-visual='👀' data-type='emoji'>looked</span> at Tom and said, \"We cannot go.\"\nTom said, \"Yes, it is better to <span class='interactive-word' data-visual='🏠' data-type='emoji'>stay inside</span>.\"\nThey <span class='interactive-word' data-visual='🪟' data-type='emoji'>closed</span> the <span class='interactive-word' data-visual='🪟' data-type='emoji'>windows</span> and <span class='interactive-word' data-visual='🔒' data-type='emoji'>locked</span> the <span class='interactive-word' data-visual='🚪' data-type='emoji'>doors</span>.",
           "audio": "assets/stories/story-5/fishing_part6.wav",
           "glossary": {}
         },
