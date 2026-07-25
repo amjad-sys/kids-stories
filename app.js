@@ -676,6 +676,14 @@
         });
       });
 
+      // Bind text tooltip logic
+      partText.querySelectorAll('.word.has-meaning').forEach(function(el) {
+        el.addEventListener('click', function(e) {
+          e.stopPropagation();
+          showTooltip(this, this.dataset.word, this.dataset.meaning);
+        });
+      });
+
       if (part.audio) {
         createAndAppendAudioPlayer(part.audio, partText);
       }
