@@ -337,7 +337,79 @@
     if (!e.target.classList.contains('word') && !tooltip.contains(e.target)) {
       hideTooltip();
     }
+    if (!e.target.classList.contains('interactive-word') && typeof visualTooltip !== 'undefined' && !visualTooltip.contains(e.target)) {
+      hideVisualTooltip();
+    }
   });
+
+  // ══════════════════════════════════════════
+  //  VISUAL TOOLTIP
+  // ══════════════════════════════════════════
+  const visualTooltip = document.createElement('div');
+  visualTooltip.className = 'visual-tooltip';
+  visualTooltip.innerHTML = '<div class="visual-content"></div><button class="tooltip-speak-btn" type="button">🔊</button>';
+  document.body.appendChild(visualTooltip);
+
+  visualTooltip.querySelector('.tooltip-speak-btn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    var word = visualTooltip.dataset.word;
+    if (word) speakWord(word);
+  });
+
+  let visualTooltipTimeout = null;
+
+  function showVisualTooltip(wordEl, visualData, visualType, word) {
+    var contentEl = visualTooltip.querySelector('.visual-content');
+    visualTooltip.dataset.word = word; // for audio
+
+    if (visualType === 'emoji') {
+      contentEl.innerHTML = '<span class="tooltip-emoji">' + visualData + '</span>';
+    } else if (visualType === 'gif') {
+      contentEl.innerHTML = '<img class="tooltip-gif" src="' + visualData + '" alt="Visual representation of ' + word + '">';
+    }
+
+    // Speak the word
+    speakWord(word);
+
+    // Position tooltip
+    var rect = wordEl.getBoundingClientRect();
+    var tooltipWidth = 150; // estimated
+    var left = rect.left + (rect.width / 2) - (tooltipWidth / 2);
+    var top = rect.top - 80;
+
+    // Keep tooltip on screen
+    if (left < 10) left = 10;
+    if (left + tooltipWidth > window.innerWidth - 10) left = window.innerWidth - tooltipWidth - 10;
+    if (top < 10) {
+      top = rect.bottom + 10;
+      visualTooltip.classList.add('tooltip-below');
+    } else {
+      visualTooltip.classList.remove('tooltip-below');
+    }
+
+    visualTooltip.style.left = left + 'px';
+    visualTooltip.style.top = top + 'px';
+    visualTooltip.classList.add('visible');
+
+    // Highlight
+    document.querySelectorAll('.interactive-word.highlighted').forEach(function (el) {
+      el.classList.remove('highlighted');
+    });
+    wordEl.classList.add('highlighted');
+
+    clearTimeout(visualTooltipTimeout);
+    visualTooltipTimeout = setTimeout(function () {
+      hideVisualTooltip();
+    }, 4000);
+  }
+
+  function hideVisualTooltip() {
+    visualTooltip.classList.remove('visible');
+    document.querySelectorAll('.interactive-word.highlighted').forEach(function (el) {
+      el.classList.remove('highlighted');
+    });
+    clearTimeout(visualTooltipTimeout);
+  }
 
   // ── Make words clickable ──
   function renderTextWithWords(text, glossary) {
@@ -589,7 +661,25 @@
     currentActivePlayerIndex = -1;
     isPlaying = false;
 
-    if (part.segments && part.segments.length > 0) {
+    if (part.htmlText) {
+      // Use raw HTML for visual tooltips
+      var p = document.createElement('p');
+      p.className = 'story-line';
+      p.innerHTML = part.htmlText.replace(/\n/g, '<br>');
+      partText.appendChild(p);
+      
+      // Bind visual tooltip logic
+      partText.querySelectorAll('.interactive-word').forEach(function(el) {
+        el.addEventListener('click', function(e) {
+          e.stopPropagation();
+          showVisualTooltip(this, this.dataset.visual, this.dataset.type, this.textContent.trim());
+        });
+      });
+
+      if (part.audio) {
+        createAndAppendAudioPlayer(part.audio, partText);
+      }
+    } else if (part.segments && part.segments.length > 0) {
       part.segments.forEach(function(segment) {
         renderTextWithWords(segment.text, part.glossary);
         if (segment.audio) {

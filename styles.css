@@ -1818,6 +1818,75 @@ ul, ol {
   direction: rtl;
 }
 
+/* ── Interactive Word (Visual Association) ── */
+.interactive-word {
+  border-bottom: 2px dashed #ccc;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.interactive-word:hover {
+  background: rgba(124, 58, 237, 0.1);
+  border-bottom-color: var(--purple);
+}
+.interactive-word.highlighted {
+  background: var(--yellow-light);
+  color: var(--purple-dark);
+}
+
+/* ── Visual Tooltip ── */
+.visual-tooltip {
+  position: fixed;
+  z-index: 2000;
+  min-width: 100px;
+  max-width: 150px;
+  padding: 10px;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.2);
+  border: 2px solid var(--purple-light);
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(8px) scale(0.9);
+  transition: opacity 0.25s var(--ease-smooth), transform 0.25s var(--ease-bounce);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.visual-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.visual-tooltip::after {
+  content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
+  border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid var(--white);
+}
+.visual-tooltip::before {
+  content: ''; position: absolute; bottom: -13px; left: 50%; transform: translateX(-50%);
+  border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 12px solid var(--purple-light);
+}
+.visual-tooltip.tooltip-below::after { bottom: auto; top: -10px; border-top: none; border-bottom: 10px solid var(--white); }
+.visual-tooltip.tooltip-below::before { bottom: auto; top: -13px; border-top: none; border-bottom: 12px solid var(--purple-light); }
+
+.visual-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.tooltip-emoji {
+  font-size: 3rem;
+  line-height: 1;
+}
+.tooltip-gif {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
 .tooltip-speak-btn {
   background: none;
   border: none;
