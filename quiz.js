@@ -591,6 +591,7 @@ async function checkMandatoryQuiz() {
 
     if (sameRound) {
       // vocab quiz done, but how about grammar quiz?
+      if (grammarQuizEnabled) {
         const sameGrammarRound = (me.lastGrammarVersion === cfg.version);
         const grammarAttemptCount = sameGrammarRound ? (me.grammarAttemptCount || 1) : 0;
         const grammarAllowRepeat = grammarAttemptCount < activeMaxAttempts || !!me.retakeAllowed;
