@@ -646,6 +646,7 @@ async function buildQuizManager() {
 
   // ── Max Attempts ──
   setupMaxAttempts(quizRef);
+  setupGrammarQuizToggle();
 
   // ── Prepare New Quiz (Draft) ──
   document.getElementById('save-quiz-config').addEventListener('click', async () => {
@@ -727,6 +728,39 @@ function setupMaxAttempts(quizRef) {
     } catch (e) {
       console.error('Save max attempts failed:', e);
       hint.textContent = 'Failed to save. Try again.';
+    } finally {
+      saveBtn.disabled = false;
+    }
+  });
+}
+
+// ── Grammar Quiz: Global toggle for the Pronoun Quiz ──
+function setupGrammarQuizToggle() {
+  const checkbox = document.getElementById('grammar-quiz-enabled');
+  const saveBtn = document.getElementById('save-grammar-quiz');
+  if (!checkbox || !saveBtn) return;
+
+  const docRef = window.fs.collection('settings').doc('features');
+
+  // Live-reflect current state
+  docRef.onSnapshot((snap) => {
+    if (snap.exists) {
+      checkbox.checked = snap.data().grammarQuizEnabled === true;
+    } else {
+      checkbox.checked = false;
+    }
+  });
+
+  saveBtn.addEventListener('click', async () => {
+    saveBtn.disabled = true;
+    const isChecked = checkbox.checked;
+    try {
+      await docRef.set({ grammarQuizEnabled: isChecked }, { merge: true });
+      saveBtn.textContent = 'Saved!';
+      setTimeout(() => { saveBtn.textContent = 'Save'; }, 2000);
+    } catch (e) {
+      console.error('Failed to save grammar quiz setting:', e);
+      saveBtn.textContent = 'Error';
     } finally {
       saveBtn.disabled = false;
     }

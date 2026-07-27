@@ -5,6 +5,7 @@
  */
 import { buildQuiz, buildFixedQuiz, scoreQuiz, InsufficientVocabulary, QUESTION_COUNT } from './quiz-core.js';
 import { getSession } from './auth-core.js';
+import { startGrammarQuiz } from './grammar-quiz.js';
 
 const QUESTION_MS = 9000;
 
@@ -334,12 +335,33 @@ async function finishQuiz() {
   completed = true; // answering is done → the student may now leave / browse
   stopMusic(); // music ends when the score appears
   const score = scoreQuiz(questions, answers);
+  
+  let hasGrammarQuiz = false;
+  try {
+    const settingsSnap = await window.fs.collection('settings').doc('features').get();
+    if (settingsSnap.exists && settingsSnap.data().grammarQuizEnabled) {
+      hasGrammarQuiz = true;
+    }
+  } catch (e) {
+    console.error('Failed to check grammar quiz setting:', e);
+  }
+
+  const nextBtnHtml = hasGrammarQuiz 
+    ? '<button class="btn3d" id="grammar-next" type="button" style="background:#4ecdc4; box-shadow:0 6px 0 #3b9b94;">Next: Grammar Quiz ▶</button>'
+    : '<button class="btn3d" id="quiz-close" type="button">Back to Home</button>';
+
   card.innerHTML =
     '<div class="quiz-result"><h2>Great job!</h2>' +
     '<div class="final-score">' + score + ' / ' + QUESTION_COUNT + '</div>' +
     '<p class="quiz-message" id="quiz-save-msg"></p>' +
-    '<button class="btn3d" id="quiz-close" type="button">Back to Home</button></div>';
-  document.getElementById('quiz-close').addEventListener('click', closeQuiz);
+    nextBtnHtml + '</div>';
+
+  if (hasGrammarQuiz) {
+    document.getElementById('grammar-next').addEventListener('click', startGrammarQuiz);
+  } else {
+    document.getElementById('quiz-close').addEventListener('click', closeQuiz);
+  }
+  
   launchConfetti();
 
   const saveMsg = document.getElementById('quiz-save-msg');
@@ -385,6 +407,17 @@ async function startQuiz() {
     activeStoryId = cfg.storyId || '';
     activePartIndex = cfg.partIndex || 0;
   } catch (e) {
+    let grammarQuizEnabled = false;
+    try {
+      const settingsSnap = await window.fs.collection('settings').doc('features').get();
+      grammarQuizEnabled = settingsSnap.exists && settingsSnap.data().grammarQuizEnabled === true;
+    } catch (err) {}
+    
+    if (grammarQuizEnabled) {
+      startGrammarQuiz();
+      return;
+    }
+
     renderMessage('The quiz is not ready yet. Please ask your teacher to set it up.');
     return;
   }
@@ -475,6 +508,19 @@ if (fab && overlay && card) {
 async function checkMandatoryQuiz() {
   const session = getSession();
   if (!session) return;
+  
+  let grammarQuizEnabled = false;
+  try {
+    const settingsSnap = await window.fs.collection('settings').doc('features').get();
+    grammarQuizEnabled = settingsSnap.exists && settingsSnap.data().grammarQuizEnabled === true;
+  } catch (e) {
+    console.error(e);
+  }
+
+  if (grammarQuizEnabled && fab) {
+    fab.style.display = 'flex';
+  }
+
   let cfg;
   try {
     cfg = await loadActiveConfig();
