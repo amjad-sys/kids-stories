@@ -299,14 +299,23 @@ async function finishGrammarQuiz() {
   // Save score to leaderboard
   try {
     saveMsg.textContent = 'Saving points...';
+    // Fetch active quiz config to get version and max attempts
     const db = window.fs;
     const ref = db.collection('students').doc(session.username);
     
-    // Fetch config to get version and max attempts
-    const cfgSnap = await db.collection('settings').doc('config').get();
-    const cfg = cfgSnap.exists ? cfgSnap.data() : {};
-    const version = cfg.version || 0;
-    const maxAttempts = cfg.maxAttempts || 1;
+    // Read version from the active quiz (same source as quiz.js)
+    let version = 0;
+    let maxAttempts = 1;
+    try {
+      const quizSnap = await db.collection('quizzes').where('isActive', '==', true).limit(1).get();
+      if (!quizSnap.empty) {
+        const quizCfg = quizSnap.docs[0].data();
+        version = Number.isFinite(quizCfg.version) ? quizCfg.version : 0;
+        maxAttempts = Number.isFinite(quizCfg.maxAttempts) ? quizCfg.maxAttempts : 1;
+      }
+    } catch (e) {
+      console.warn('Could not load active quiz config for grammar:', e);
+    }
     
     let addedPoints = 0;
     

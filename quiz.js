@@ -581,7 +581,8 @@ async function checkMandatoryQuiz() {
       fabVocab.style.display = 'flex';
     }
     
-    const sameGrammarRound = (me.lastGrammarVersion === cfg.version);
+    const cfgVer = cfg.version || 0;
+    const sameGrammarRound = (me.lastGrammarVersion === cfgVer);
     const grammarAttemptCount = sameGrammarRound ? (me.grammarAttemptCount || 1) : 0;
     const grammarAllowRepeat = grammarAttemptCount < maxAllowed || !!me.retakeAllowed;
     
@@ -592,11 +593,10 @@ async function checkMandatoryQuiz() {
     if (sameRound) {
       // vocab quiz done, but how about grammar quiz?
       if (grammarQuizEnabled) {
-        const sameGrammarRound = (me.lastGrammarVersion === cfg.version);
-        const grammarAttemptCount = sameGrammarRound ? (me.grammarAttemptCount || 1) : 0;
-        const grammarAllowRepeat = grammarAttemptCount < activeMaxAttempts || !!me.retakeAllowed;
+        const sameGrammarRound2 = (me.lastGrammarVersion === cfgVer);
+        const grammarAttemptCount2 = sameGrammarRound2 ? (me.grammarAttemptCount || 1) : 0;
         
-        if (grammarAttemptCount === 0) {
+        if (grammarAttemptCount2 === 0) {
           mandatory = true;
           completed = false;
           document.body.classList.add('quiz-locked');
