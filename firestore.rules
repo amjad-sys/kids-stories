@@ -96,5 +96,11 @@ service cloud.firestore {
       allow read: if true;
       allow write: if true; // students write their results, admin reads them
     }
+
+    // App global settings (e.g., feature toggles like grammar quiz)
+    match /settings/{docId} {
+      allow read: if true;
+      allow write: if true; // admin only in practice
+    }
   }
 }
