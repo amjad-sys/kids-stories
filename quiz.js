@@ -340,7 +340,19 @@ async function finishQuiz() {
   try {
     const settingsSnap = await window.fs.collection('settings').doc('features').get();
     if (settingsSnap.exists && settingsSnap.data().grammarQuizEnabled) {
-      hasGrammarQuiz = true;
+      const session = getSession();
+      if (session) {
+        const meSnap = await window.fs.collection('students').doc(session.username).get();
+        const me = meSnap.exists ? (meSnap.data() || {}) : {};
+        let tookGrammarRecently = false;
+        if (me.lastGrammarQuizTime) {
+          const ms = me.lastGrammarQuizTime.toMillis ? me.lastGrammarQuizTime.toMillis() : 0;
+          if (Date.now() - ms < 12 * 60 * 60 * 1000) tookGrammarRecently = true;
+        }
+        if (!tookGrammarRecently) {
+          hasGrammarQuiz = true;
+        }
+      }
     }
   } catch (e) {
     console.error('Failed to check grammar quiz setting:', e);
