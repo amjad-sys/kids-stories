@@ -34,7 +34,8 @@ service cloud.firestore {
       allow create: if request.resource.data.keys().hasOnly(
                         ['username', 'displayName', 'cumulativeScore', 'lastScore', 'lastQuizVersion', 'quizAttemptCount',
                          'photo', 'timeToday', 'timeDate', 'retakeAllowed', 'score',
-                         'cumulativeAttempts', 'scoreUpdatedAt'])
+                         'cumulativeAttempts', 'scoreUpdatedAt',
+                         'grammarAttemptCount', 'lastGrammarScore', 'lastGrammarVersion', 'lastGrammarQuizTime'])
                     && request.resource.data.cumulativeScore is int
                     && request.resource.data.cumulativeScore >= 0
                     && request.resource.data.lastScore is int
@@ -50,7 +51,8 @@ service cloud.firestore {
       allow update: if request.resource.data.keys().hasOnly(
                         ['username', 'displayName', 'cumulativeScore', 'lastScore', 'lastQuizVersion', 'quizAttemptCount',
                          'photo', 'timeToday', 'timeDate', 'retakeAllowed', 'score',
-                         'cumulativeAttempts', 'scoreUpdatedAt'])
+                         'cumulativeAttempts', 'scoreUpdatedAt',
+                         'grammarAttemptCount', 'lastGrammarScore', 'lastGrammarVersion', 'lastGrammarQuizTime'])
                     && request.resource.data.username == resource.data.username
                     && request.resource.data.cumulativeScore is int
                     && request.resource.data.cumulativeScore >= 0
@@ -65,6 +67,10 @@ service cloud.firestore {
                     && (!('timeDate' in request.resource.data) || request.resource.data.timeDate is string)
                     && (!('quizAttemptCount' in request.resource.data) || request.resource.data.quizAttemptCount is int)
                     && (!('retakeAllowed' in request.resource.data) || request.resource.data.retakeAllowed is bool)
+                    && (!('grammarAttemptCount' in request.resource.data) || request.resource.data.grammarAttemptCount is int)
+                    && (!('lastGrammarScore' in request.resource.data) || request.resource.data.lastGrammarScore is int)
+                    && (!('lastGrammarVersion' in request.resource.data) || request.resource.data.lastGrammarVersion is int)
+                    && (!('lastGrammarQuizTime' in request.resource.data) || request.resource.data.lastGrammarQuizTime is timestamp)
                     && (!('photo' in request.resource.data)
                         || (request.resource.data.photo is string && request.resource.data.photo.size() < 400000));
 
