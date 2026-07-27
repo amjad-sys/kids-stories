@@ -32,8 +32,8 @@ const QUESTIONS = [
   },
   {
     type: 'sentence',
-    sentence1: "My mom and I are baking.",
-    sentence2: "[ _____ ] are making a cake.",
+    sentence1: "My brother and I ate breakfast.",
+    sentence2: "[ _____ ] are not hungry.",
     options: ["They", "We", "I"],
     correct: "We"
   },
