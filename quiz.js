@@ -531,7 +531,26 @@ async function checkMandatoryQuiz() {
     activeStoryId = cfg.storyId || '';
     activePartIndex = cfg.partIndex || 0;
   } catch (e) {
-    return; // no active/valid quiz → free to browse
+    // no active/valid vocab quiz
+    if (grammarQuizEnabled) {
+      try {
+        const meSnap = await window.fs.collection('students').doc(session.username).get();
+        const me = meSnap.exists ? (meSnap.data() || {}) : {};
+        let tookGrammarRecently = false;
+        if (me.lastGrammarQuizTime) {
+          const ms = me.lastGrammarQuizTime.toMillis ? me.lastGrammarQuizTime.toMillis() : 0;
+          if (Date.now() - ms < 12 * 60 * 60 * 1000) tookGrammarRecently = true;
+        }
+        if (!tookGrammarRecently) {
+          mandatory = true;
+          completed = false;
+          document.body.classList.add('quiz-locked');
+          overlay.classList.remove('hidden');
+          import('./grammar-quiz.js').then(m => m.startGrammarQuiz());
+        }
+      } catch(err) {}
+    }
+    return;
   }
   if (!cfg.version) return; // nothing published yet
   let me = {};
@@ -553,7 +572,24 @@ async function checkMandatoryQuiz() {
       fab.style.display = 'flex';
     }
 
-    if (sameRound) return; // already done this round AT LEAST ONCE → free to browse
+    if (sameRound) {
+      // vocab quiz done, but how about grammar quiz?
+      if (grammarQuizEnabled) {
+        let tookGrammarRecently = false;
+        if (me.lastGrammarQuizTime) {
+          const ms = me.lastGrammarQuizTime.toMillis ? me.lastGrammarQuizTime.toMillis() : 0;
+          if (Date.now() - ms < 12 * 60 * 60 * 1000) tookGrammarRecently = true;
+        }
+        if (!tookGrammarRecently) {
+          mandatory = true;
+          completed = false;
+          document.body.classList.add('quiz-locked');
+          overlay.classList.remove('hidden');
+          import('./grammar-quiz.js').then(m => m.startGrammarQuiz());
+        }
+      }
+      return; 
+    }
   } catch (e) {
     if (fab) fab.style.display = 'flex';
     return; // be lenient if the check fails
