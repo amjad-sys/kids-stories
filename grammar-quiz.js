@@ -75,7 +75,7 @@ let currentQ = 0;
 let score = 0;
 const overlay = document.getElementById('quiz-overlay');
 const card = document.getElementById('quiz-card');
-const SCORE_POINTS_PER_QUESTION = 5;
+const SCORE_POINTS_PER_QUESTION = 1;
 
 // Audio helpers
 let audioCtx = null;
