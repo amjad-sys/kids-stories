@@ -349,7 +349,7 @@ async function finishQuiz() {
         const grammarAttemptCount = sameGrammarRound ? (me.grammarAttemptCount || 1) : 0;
         const grammarAllowRepeat = grammarAttemptCount < activeMaxAttempts || !!me.retakeAllowed;
         
-        if (grammarAllowRepeat) {
+        if (grammarAttemptCount === 0) {
           hasGrammarQuiz = true;
         }
       }
@@ -596,7 +596,7 @@ async function checkMandatoryQuiz() {
         const grammarAttemptCount = sameGrammarRound ? (me.grammarAttemptCount || 1) : 0;
         const grammarAllowRepeat = grammarAttemptCount < activeMaxAttempts || !!me.retakeAllowed;
         
-        if (grammarAllowRepeat) {
+        if (grammarAttemptCount === 0) {
           mandatory = true;
           completed = false;
           document.body.classList.add('quiz-locked');
