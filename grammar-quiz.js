@@ -302,17 +302,51 @@ async function finishGrammarQuiz() {
     const db = window.fs;
     const ref = db.collection('students').doc(session.username);
     
+    // Fetch config to get version and max attempts
+    const cfgSnap = await db.collection('settings').doc('config').get();
+    const cfg = cfgSnap.exists ? cfgSnap.data() : {};
+    const version = cfg.version || 0;
+    const maxAttempts = cfg.maxAttempts || 1;
+    
+    let addedPoints = 0;
+    
     await db.runTransaction(async (t) => {
       const doc = await t.get(ref);
       if (!doc.exists) throw new Error('Student not found');
       const data = doc.data();
       const currentScore = data.cumulativeScore || 0;
+      
+      const sameRound = (data.lastGrammarVersion === version);
+      const attemptCount = sameRound ? (data.grammarAttemptCount || 1) : 0;
+      
+      if (sameRound && attemptCount >= maxAttempts && !data.retakeAllowed) {
+        throw new Error('max_attempts');
+      }
+      
+      const prevLast = sameRound ? (data.lastGrammarScore || 0) : 0;
+      let newLastScore;
+      
+      if (sameRound) {
+        addedPoints = Math.max(0, totalPoints - prevLast);
+        newLastScore = Math.max(prevLast, totalPoints);
+      } else {
+        addedPoints = totalPoints;
+        newLastScore = totalPoints;
+      }
+      
       t.update(ref, { 
-        cumulativeScore: currentScore + totalPoints,
+        cumulativeScore: currentScore + addedPoints,
+        lastGrammarVersion: version,
+        grammarAttemptCount: sameRound ? attemptCount + 1 : 1,
+        lastGrammarScore: newLastScore,
         lastGrammarQuizTime: window.firebase.firestore.FieldValue.serverTimestamp()
       });
     });
-    saveMsg.textContent = 'Points added to Leaderboard! 🌟';
+    if (addedPoints > 0) {
+      saveMsg.textContent = 'Points added to Leaderboard! 🌟';
+    } else {
+      saveMsg.textContent = 'Score saved! (No new points)';
+    }
   } catch (err) {
     console.error('Failed to save grammar score:', err);
     saveMsg.textContent = 'Could not save points.';

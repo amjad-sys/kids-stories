@@ -39,9 +39,10 @@ function meaningfulGlossary(glossary) {
   return Object.keys(filtered).length >= 4 ? filtered : glossary;
 }
 
-const fab = document.getElementById('quiz-fab');
 const overlay = document.getElementById('quiz-overlay');
 const card = document.getElementById('quiz-card');
+const fabVocab = document.getElementById('quiz-fab-vocab');
+const fabGrammar = document.getElementById('quiz-fab-grammar');
 
 let questions = [];
 let answers = [];
@@ -344,12 +345,11 @@ async function finishQuiz() {
       if (session) {
         const meSnap = await window.fs.collection('students').doc(session.username).get();
         const me = meSnap.exists ? (meSnap.data() || {}) : {};
-        let tookGrammarRecently = false;
-        if (me.lastGrammarQuizTime) {
-          const ms = me.lastGrammarQuizTime.toMillis ? me.lastGrammarQuizTime.toMillis() : 0;
-          if (Date.now() - ms < 12 * 60 * 60 * 1000) tookGrammarRecently = true;
-        }
-        if (!tookGrammarRecently) {
+        const sameGrammarRound = (me.lastGrammarVersion === activeVersion);
+        const grammarAttemptCount = sameGrammarRound ? (me.grammarAttemptCount || 1) : 0;
+        const grammarAllowRepeat = grammarAttemptCount < activeMaxAttempts || !!me.retakeAllowed;
+        
+        if (grammarAllowRepeat) {
           hasGrammarQuiz = true;
         }
       }
@@ -508,8 +508,9 @@ function renderEncouragement(cfg, photo) {
   document.getElementById('enc-start').addEventListener('click', runQuiz);
 }
 
-if (fab && overlay && card) {
-  fab.addEventListener('click', startQuiz);
+if (fabVocab && fabGrammar && overlay && card) {
+  fabVocab.addEventListener('click', startQuiz);
+  fabGrammar.addEventListener('click', startGrammarQuiz);
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) closeQuiz();
   });
@@ -527,10 +528,6 @@ async function checkMandatoryQuiz() {
     grammarQuizEnabled = settingsSnap.exists && settingsSnap.data().grammarQuizEnabled === true;
   } catch (e) {
     console.error(e);
-  }
-
-  if (grammarQuizEnabled && fab) {
-    fab.style.display = 'flex';
   }
 
   let cfg;
@@ -580,19 +577,25 @@ async function checkMandatoryQuiz() {
     const maxAllowed = cfg.maxAttempts || 1;
     const allowRepeat = attemptCount < maxAllowed || !!me.retakeAllowed;
     
-    if (allowRepeat && fab) {
-      fab.style.display = 'flex';
+    if (allowRepeat && fabVocab) {
+      fabVocab.style.display = 'flex';
+    }
+    
+    const sameGrammarRound = (me.lastGrammarVersion === cfg.version);
+    const grammarAttemptCount = sameGrammarRound ? (me.grammarAttemptCount || 1) : 0;
+    const grammarAllowRepeat = grammarAttemptCount < maxAllowed || !!me.retakeAllowed;
+    
+    if (grammarQuizEnabled && grammarAllowRepeat && fabGrammar) {
+      fabGrammar.style.display = 'flex';
     }
 
     if (sameRound) {
       // vocab quiz done, but how about grammar quiz?
-      if (grammarQuizEnabled) {
-        let tookGrammarRecently = false;
-        if (me.lastGrammarQuizTime) {
-          const ms = me.lastGrammarQuizTime.toMillis ? me.lastGrammarQuizTime.toMillis() : 0;
-          if (Date.now() - ms < 12 * 60 * 60 * 1000) tookGrammarRecently = true;
-        }
-        if (!tookGrammarRecently) {
+        const sameGrammarRound = (me.lastGrammarVersion === cfg.version);
+        const grammarAttemptCount = sameGrammarRound ? (me.grammarAttemptCount || 1) : 0;
+        const grammarAllowRepeat = grammarAttemptCount < activeMaxAttempts || !!me.retakeAllowed;
+        
+        if (grammarAllowRepeat) {
           mandatory = true;
           completed = false;
           document.body.classList.add('quiz-locked');
@@ -603,7 +606,7 @@ async function checkMandatoryQuiz() {
       return; 
     }
   } catch (e) {
-    if (fab) fab.style.display = 'flex';
+    if (fabVocab) fabVocab.style.display = 'flex';
     return; // be lenient if the check fails
   }
   mandatory = true;
@@ -617,7 +620,8 @@ async function checkMandatoryQuiz() {
 if (!PREVIEW && overlay && card) {
   checkMandatoryQuiz();
 } else if (PREVIEW) {
-  if (fab) fab.style.display = 'flex';
+  if (fabVocab) fabVocab.style.display = 'flex';
+  if (fabGrammar) fabGrammar.style.display = 'flex';
   // Admin preview auto-starts to save a click
   setTimeout(startQuiz, 300);
 }
