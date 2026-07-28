@@ -4,45 +4,45 @@ import { getSession } from './auth-core.js';
 const QUESTIONS = [
   {
     type: 'sentence',
-    sentence1: "Ali and Tom closed the window.",
-    sentence2: "[ _____ ] are safe.",
-    options: ["He", "She", "They"],
-    correct: "They"
+    sentence1: "Ali and Tom are friends.",
+    sentence2: "They [ _____ ] playing.",
+    options: ["are", "is", "am"],
+    correct: "are"
   },
   {
     type: 'sentence',
-    sentence1: "Ali closed the window.",
-    sentence2: "[ _____ ] is safe.",
-    options: ["He", "She", "They"],
-    correct: "He"
+    sentence1: "Sara is at school.",
+    sentence2: "She [ _____ ] reading.",
+    options: ["is", "are", "am"],
+    correct: "is"
   },
   {
     type: 'sentence',
-    sentence1: "The dog runs fast.",
-    sentence2: "[ _____ ] is very quick.",
+    sentence1: "The dog is small.",
+    sentence2: "[ _____ ] is very fast.",
     options: ["It", "He", "They"],
     correct: "It"
   },
   {
     type: 'sentence',
-    sentence1: "Sara is reading a book.",
-    sentence2: "[ _____ ] loves stories.",
-    options: ["He", "She", "It"],
-    correct: "She"
+    sentence1: "My brother and I are hungry.",
+    sentence2: "[ _____ ] want an apple.",
+    options: ["We", "They", "He"],
+    correct: "We"
   },
   {
     type: 'sentence',
-    sentence1: "My brother and I ate breakfast.",
-    sentence2: "[ _____ ] are not hungry.",
-    options: ["They", "We", "I"],
-    correct: "We"
+    sentence1: "The boys are running.",
+    sentence2: "[ _____ ] are happy.",
+    options: ["They", "We", "It"],
+    correct: "They"
   },
   {
     type: 'sentence',
     sentence1: "Tom says to Ali:",
     sentence2: "\"Can [ _____ ] help me?\"",
-    options: ["You", "I", "He"],
-    correct: "You"
+    options: ["you", "I", "he"],
+    correct: "you"
   },
   {
     type: 'image',
