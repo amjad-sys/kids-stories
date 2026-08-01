@@ -1372,7 +1372,7 @@
           "audio": "assets/stories/story 6/adam part1.wav",
           "text": "When the loud alarm rang, Adam slowly opened his sleepy eyes and whispered, \"I have a hard test today, but I am quite ready!\"",
           "glossary": {
-            "When": "عِندَما",
+            "when": "عِندَما",
             "the": "الـ",
             "loud": "عالٍ",
             "alarm": "مُنَبِّه",
@@ -1384,7 +1384,7 @@
             "eyes": "عُيون",
             "and": "وَ",
             "whispered": "هَمَسَ",
-            "I": "أَنا",
+            "i": "أَنا",
             "have": "عِندي / أَملِك",
             "a": "أداة تنكير",
             "hard": "صَعب",
@@ -1401,7 +1401,7 @@
           "audio": "assets/stories/story 6/adam part2.wav",
           "text": "He got out of his warm bed, brushed his teeth carefully, and put on his clean blue school uniform.",
           "glossary": {
-            "He": "هو",
+            "he": "هو",
             "got": "حَصَلَ / نَهَضَ",
             "out": "خارِج",
             "of": "مِن",
@@ -1425,7 +1425,7 @@
           "audio": "assets/stories/story 6/adam part3.wav",
           "text": "At breakfast, his happy family ate together and talked about their culture and how working hard always brings great success.",
           "glossary": {
-            "At": "عِندَ",
+            "at": "عِندَ",
             "breakfast": "فُطور",
             "his": "خاصَّتُه",
             "happy": "سَعيد",
@@ -1450,7 +1450,7 @@
           "image": "assets/stories/story 6/Boy_standing_at_front_door_202608010951.jpeg",
           "text": "Before leaving the house, Adam paused at the front door and thought, \"I feel like I can score top marks if I stay very calm and focused.\"",
           "glossary": {
-            "Before": "قَبلَ",
+            "before": "قَبلَ",
             "leaving": "المُغادَرة",
             "the": "الـ",
             "house": "مَنزِل",
@@ -1460,7 +1460,7 @@
             "door": "باب",
             "and": "وَ",
             "thought": "فَكَّرَ",
-            "I": "أَنا",
+            "i": "أَنا",
             "feel": "أَشعُر",
             "like": "أَنَّني",
             "can": "أَستَطيع",
@@ -1478,7 +1478,7 @@
           "image": "assets/stories/story 6/Boy_hugging_parents_goodbye_202608010951.jpeg",
           "text": "He hugged his parents tightly, said goodbye, and walked outside to wait for the big yellow school bus with his friends.",
           "glossary": {
-            "He": "هو",
+            "he": "هو",
             "hugged": "عانَقَ",
             "his": "خاصَّتُه",
             "parents": "والِدَيه",
@@ -1504,7 +1504,7 @@
           "image": "assets/stories/story 6/Boy_playing_guitar_on_bus_202608010951.jpeg",
           "text": "On the morning bus, his good friend played a calm, happy tune on a small guitar to help Adam relax.",
           "glossary": {
-            "On": "على / في",
+            "on": "على / في",
             "the": "الـ",
             "morning": "صَباح",
             "bus": "حافِلة",
@@ -1528,7 +1528,7 @@
           "image": "assets/stories/story 6/Boy_taking_deep_breath_202608010951.jpeg",
           "text": "The long, difficult test questions didn't seem so scary after he took a deep breath and thought very carefully.",
           "glossary": {
-            "The": "الـ",
+            "the": "الـ",
             "long": "طَويل",
             "difficult": "صَعب",
             "test": "اِختِبار",
@@ -1553,7 +1553,7 @@
           "image": "assets/stories/story 6/Boy_writing_on_test_paper_202608010951.jpeg",
           "text": "During the quiet test, Adam focused hard, answered the easy questions first, and then slowly moved to the hard ones.",
           "glossary": {
-            "During": "أَثناءَ",
+            "during": "أَثناءَ",
             "the": "الـ",
             "quiet": "هادِئ",
             "test": "اِختِبار",
@@ -1575,7 +1575,7 @@
           "image": "assets/stories/story 6/Boy_smiling_in_classroom_202608010951.jpeg",
           "text": "He remembered that at his young age, he can develop great skills so his answers sound clear and good.",
           "glossary": {
-            "He": "هو",
+            "he": "هو",
             "remembered": "تَذَكَّرَ",
             "that": "أَنَّ",
             "at": "في",
@@ -1598,7 +1598,7 @@
           "image": "assets/stories/story 6/Boy_eating_pizza_with_family_202608010951.jpeg",
           "text": "After acing the school test, Adam happily celebrated with his family by eating a big, delicious hot pizza.",
           "glossary": {
-            "After": "بَعدَ",
+            "after": "بَعدَ",
             "acing": "اِجتِياز بِتَفَوُّق",
             "the": "الـ",
             "school": "مَدرَسة",
