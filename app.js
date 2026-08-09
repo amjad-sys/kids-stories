@@ -171,6 +171,19 @@
           { pronoun: 'It 🐵', css: 'it', sentence: 'It <strong>likes</strong> to go to the beach.', translation: 'هو/هي يحب/تحب' }
         ]
       }
+    },
+    'story-6': {
+      6: { // Part 7 (index 6) — calm and focused
+        rows: [
+          { pronoun: 'I', css: 'i', sentence: 'I <strong>am</strong> calm and focused.', translation: 'أنا هادئ ومُرَكِّز' },
+          { pronoun: 'You', css: 'you', sentence: 'You <strong>are</strong> calm and focused.', translation: 'أنتَ/أنتِ هادئ/ة ومُرَكِّز/ة' },
+          { pronoun: 'He', css: 'he', sentence: 'He <strong>is</strong> calm and focused.', translation: 'هو هادئ ومُرَكِّز' },
+          { pronoun: 'She', css: 'she', sentence: 'She <strong>is</strong> calm and focused.', translation: 'هي هادئة ومُرَكِّزة' },
+          { pronoun: 'We', css: 'we', sentence: 'We <strong>are</strong> calm and focused.', translation: 'نحن هادئون ومُرَكِّزون' },
+          { pronoun: 'They', css: 'they', sentence: 'They <strong>are</strong> calm and focused.', translation: 'هم هادئون ومُرَكِّزون' },
+          { pronoun: 'It', css: 'it', sentence: 'It <strong>is</strong> calm and focused.', translation: 'هو/هي هادئ/ة ومُرَكِّز/ة (لغير العاقل)' }
+        ]
+      }
     }
   };
 
