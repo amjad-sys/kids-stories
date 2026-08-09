@@ -183,6 +183,39 @@
           { pronoun: 'They', css: 'they', sentence: 'They <strong>are</strong> calm and focused.', translation: 'هم هادئون ومُرَكِّزون' },
           { pronoun: 'It', css: 'it', sentence: 'It <strong>is</strong> calm and focused.', translation: 'هو/هي هادئ/ة ومُرَكِّز/ة (لغير العاقل)' }
         ]
+      },
+      7: { // Part 8 (index 7) — smart and quiet
+        rows: [
+          { pronoun: 'I', css: 'i', sentence: 'I <strong>am</strong> smart and quiet.', translation: 'أنا ذكي وهادئ' },
+          { pronoun: 'You', css: 'you', sentence: 'You <strong>are</strong> smart and quiet.', translation: 'أنتَ/أنتِ ذكي/ة وهادئ/ة' },
+          { pronoun: 'He', css: 'he', sentence: 'He <strong>is</strong> smart and quiet.', translation: 'هو ذكي وهادئ' },
+          { pronoun: 'She', css: 'she', sentence: 'She <strong>is</strong> smart and quiet.', translation: 'هي ذكية وهادئة' },
+          { pronoun: 'We', css: 'we', sentence: 'We <strong>are</strong> smart and quiet.', translation: 'نحن أذكياء وهادئون' },
+          { pronoun: 'They', css: 'they', sentence: 'They <strong>are</strong> smart and quiet.', translation: 'هم أذكياء وهادئون' },
+          { pronoun: 'It', css: 'it', sentence: 'It <strong>is</strong> smart and quiet.', translation: 'هو/هي ذكي/ة وهادئ/ة (لغير العاقل)' }
+        ]
+      },
+      8: { // Part 9 (index 8) — young and great
+        rows: [
+          { pronoun: 'I', css: 'i', sentence: 'I <strong>am</strong> young and great.', translation: 'أنا صغير وعظيم' },
+          { pronoun: 'You', css: 'you', sentence: 'You <strong>are</strong> young and great.', translation: 'أنتَ/أنتِ صغير/ة وعظيم/ة' },
+          { pronoun: 'He', css: 'he', sentence: 'He <strong>is</strong> young and great.', translation: 'هو صغير وعظيم' },
+          { pronoun: 'She', css: 'she', sentence: 'She <strong>is</strong> young and great.', translation: 'هي صغيرة وعظيمة' },
+          { pronoun: 'We', css: 'we', sentence: 'We <strong>are</strong> young and great.', translation: 'نحن صغار وعظماء' },
+          { pronoun: 'They', css: 'they', sentence: 'They <strong>are</strong> young and great.', translation: 'هم صغار وعظماء' },
+          { pronoun: 'It', css: 'it', sentence: 'It <strong>is</strong> young and great.', translation: 'هو/هي صغير/ة وعظيم/ة (لغير العاقل)' }
+        ]
+      },
+      9: { // Part 10 (index 9) — happy and proud
+        rows: [
+          { pronoun: 'I', css: 'i', sentence: 'I <strong>am</strong> happy and proud.', translation: 'أنا سعيد وفخور' },
+          { pronoun: 'You', css: 'you', sentence: 'You <strong>are</strong> happy and proud.', translation: 'أنتَ/أنتِ سعيد/ة وفخور/ة' },
+          { pronoun: 'He', css: 'he', sentence: 'He <strong>is</strong> happy and proud.', translation: 'هو سعيد وفخور' },
+          { pronoun: 'She', css: 'she', sentence: 'She <strong>is</strong> happy and proud.', translation: 'هي سعيدة وفخورة' },
+          { pronoun: 'We', css: 'we', sentence: 'We <strong>are</strong> happy and proud.', translation: 'نحن سعداء وفخورون' },
+          { pronoun: 'They', css: 'they', sentence: 'They <strong>are</strong> happy and proud.', translation: 'هم سعداء وفخورون' },
+          { pronoun: 'It', css: 'it', sentence: 'It <strong>is</strong> happy and proud.', translation: 'هو/هي سعيد/ة وفخور/ة (لغير العاقل)' }
+        ]
       }
     }
   };
