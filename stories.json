@@ -1629,10 +1629,11 @@
     {
       "id": "story-7",
       "title": "Omar's Trip to Yosemite",
-      "cover": "assets/stories/story 7/part1.jpeg",
+      "cover": "assets/stories/story 7/cover.jpeg",
       "parts": [
         {
           "image": "assets/stories/story 7/part1.jpeg",
+          "audio": "assets/stories/story 7/omarpar1.wav",
           "text": "Omar arrived in America to stay with his cousins Yasmeen and Adnan. His uncle and aunt were so happy to see him. They went to the house together. His grandma called on the landline to welcome him. The whole family sat together and talked happily.",
           "glossary": {
             "arrived": "وَصَلَ",
@@ -1670,6 +1671,7 @@
         },
         {
           "image": "assets/stories/story 7/part2.jpeg",
+          "audio": "assets/stories/story 7/omarpart2.wav",
           "text": "In the morning, the family ate breakfast together. The uncle asked, \"Where would you like to go, everyone?\" The aunt said, \"We could go camping in the mountains.\" Yasmeen said, \"Let's find a beautiful lake and stay there.\"",
           "glossary": {
             "in": "في",
@@ -1705,6 +1707,7 @@
         },
         {
           "image": "assets/stories/story 7/part3.jpeg",
+          "audio": "assets/stories/story 7/omarpart3.wav",
           "text": "Adnan said, \"And let's go hiking! We could also go fishing at the lake.\" The uncle smiled and said, \"Mountains, lakes, hiking, fishing... This means Yosemite!\" Everyone was so excited. Yasmeen went online to find information about the trip.",
           "glossary": {
             "said": "قالَ",
@@ -1741,6 +1744,7 @@
         },
         {
           "image": "assets/stories/story 7/part4.jpeg",
+          "audio": "assets/stories/story 7/omarpart4.wav",
           "text": "Omar said, \"I have never heard of Yosemite. What is it like?\" Adnan told him, \"It is a beautiful national park.\" They watched a documentary about it on a nature channel. The park looked fantastic with big mountains, lakes, and fish in the water.",
           "glossary": {
             "said": "قالَ",
@@ -1781,6 +1785,7 @@
         },
         {
           "image": "assets/stories/story 7/part5.jpeg",
+          "audio": "assets/stories/story 7/omartpart5.wav",
           "text": "The uncle got a map and showed everyone the trip. He checked the weather forecast on his phone. No hurricane or serious storms this week! Yasmeen said, \"We went on a school trip last year. It was so beautiful!\" Omar was excited and could not wait.",
           "glossary": {
             "the": "الـ",
@@ -1824,6 +1829,7 @@
         },
         {
           "image": "assets/stories/story 7/part6.jpeg",
+          "audio": "assets/stories/story 7/omarpart6.wav",
           "text": "The aunt asked, \"Has everyone put their things in the car?\" Omar was taking his things out of the house at the moment. Adnan could not find his trainers. Yasmeen said, \"You are so slow, Adnan! Let's help him so we can leave.\" Grandma called on the phone and said, \"Have a safe trip!\"",
           "glossary": {
             "the": "الـ",
